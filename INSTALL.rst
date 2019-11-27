@@ -48,6 +48,13 @@ Install in development mode:
         $ pip3 install -e .[all]
 
 
+Export STAC_SERVER_URL environment variable with the URL of STAC server in order to run the tests:
+
+.. code-block:: shell
+
+        $ export STAC_SERVER_URL=http://127.0.0.1:5000/
+
+
 Run the tests:
 
 .. code-block:: shell
