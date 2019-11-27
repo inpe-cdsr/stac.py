@@ -18,8 +18,17 @@ url =  os.environ.get('STAC_SERVER_URL', 'http://localhost')
 def test_main():
     service = stac(url)
 
+    expected = {
+        'description': 'INPE STAC Catalog',
+        'id': 'inpe-stac',
+        'stac_version': '0.7',
+        'links': [
+            {'href': '{}/stac'.format(service.url), 'rel': 'self'},
+            {'href': '{}/collections/CB4_AWFI'.format(service.url), 'rel': 'child', 'title': 'CB4_AWFI'},
+            {'href': '{}/collections/CB4_MUX'.format(service.url), 'rel': 'child', 'title': 'CB4_MUX'}
+        ]
+    }
+
     result = service.catalog()
 
-    print('\n\nresult: ', result)
-
-    assert 1 == 1
+    assert expected == result
