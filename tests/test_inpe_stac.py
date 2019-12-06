@@ -15,7 +15,106 @@ from stac import stac
 url =  os.environ.get('STAC_SERVER_URL', 'http://localhost')
 
 
-def test_catalog():
+'''
+def test_capabilities():
+    # TODO
+    """/capabilities"""
+
+    service = stac(url)
+
+    expected = {}
+
+    result = service.catalog()
+
+    # print('\n expected: ', expected)
+    # print('\n result: ', result)
+
+    assert expected == result
+
+
+def test_conformance():
+    # TODO
+    """/conformance"""
+
+    service = stac(url)
+
+    expected = {}
+
+    result = service.catalog()
+
+    # print('\n expected: ', expected)
+    # print('\n result: ', result)
+
+    assert expected == result
+
+
+def test_collections():
+    # TODO
+    """/collections"""
+
+    service = stac(url)
+
+    expected = {}
+
+    result = service.collections()
+
+    # print('\n expected: ', expected)
+    # print('\n result: ', result)
+
+    assert expected == result
+
+
+def test_collections_collection_id():
+    # TODO
+    """/collections/<collection_id>"""
+
+    service = stac(url)
+
+    expected = {}
+
+    result = service.catalog()
+
+    # print('\n expected: ', expected)
+    # print('\n result: ', result)
+
+    assert expected == result
+
+
+def test_collections_collection_id_items():
+    # TODO
+    """/collections/<collection_id>/items"""
+
+    service = stac(url)
+
+    expected = {}
+
+    result = service.catalog()
+
+    # print('\n expected: ', expected)
+    # print('\n result: ', result)
+
+    assert expected == result
+
+
+def test_collections_collection_id_items_item_id():
+    # TODO
+    """/collections/<collection_id>/items/<item_id>"""
+
+    service = stac(url)
+
+    expected = {}
+
+    result = service.catalog()
+
+    # print('\n expected: ', expected)
+    # print('\n result: ', result)
+
+    assert expected == result
+'''
+
+def test_stac():
+    """/stac"""
+
     service = stac(url)
 
     expected = {
@@ -31,7 +130,20 @@ def test_catalog():
 
     result = service.catalog()
 
+    assert expected == result
+
+'''
+def test_stac_search():
+    """/stac/search"""
+
+    service = stac(url)
+
+    expected = {}
+
+    result = service.catalog()
+
     # print('\n expected: ', expected)
     # print('\n result: ', result)
 
     assert expected == result
+'''
