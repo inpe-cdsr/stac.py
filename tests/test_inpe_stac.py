@@ -19,9 +19,9 @@ def test_catalog():
     service = stac(url)
 
     expected = {
-        'description': 'INPE STAC Catalog',
-        'id': 'inpe-stac',
         'stac_version': '0.7',
+        'id': 'inpe-stac',
+        'description': 'INPE STAC Catalog',
         'links': [
             {'href': '{}/stac'.format(service.url), 'rel': 'self'},
             {'href': '{}/collections/CB4_AWFI'.format(service.url), 'rel': 'child', 'title': 'CB4_AWFI'},
@@ -30,5 +30,8 @@ def test_catalog():
     }
 
     result = service.catalog()
+
+    # print('\n expected: ', expected)
+    # print('\n result: ', result)
 
     assert expected == result
