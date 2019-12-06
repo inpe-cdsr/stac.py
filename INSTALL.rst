@@ -52,7 +52,7 @@ Export STAC_SERVER_URL environment variable with the URL of STAC server in order
 
 .. code-block:: shell
 
-        $ export STAC_SERVER_URL=http://127.0.0.1:5000/
+        $ export STAC_SERVER_URL=http://localhost:5001/
 
 
 Run the tests:

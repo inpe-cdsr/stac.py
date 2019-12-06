@@ -15,7 +15,7 @@ from stac import stac
 url =  os.environ.get('STAC_SERVER_URL', 'http://localhost')
 
 
-def test_main():
+def test_catalog():
     service = stac(url)
 
     expected = {

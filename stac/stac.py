@@ -26,6 +26,13 @@ class stac:
         self._url = url if url[-1] != '/' else url[0:-1]
 
 
+    def catalog(self):
+        """Return the root catalog or collection."""
+        url = '{}/stac'.format(self._url)
+        data = self._get(url)
+        return catalog(data)
+
+
     def capabilities(self):
         """TODO."""
         pass
@@ -34,13 +41,6 @@ class stac:
     def conformance(self):
         """Return the list of conformance classes that the server conforms to."""
         return self._get('{}/conformance'.format(self._url))
-
-
-    def catalog(self):
-        """Return the root catalog or collection."""
-        url = '{}/stac'.format(self._url)
-        data = self._get(url)
-        return catalog(data)
 
 
     def collections(self):
@@ -68,8 +68,7 @@ class stac:
 
     def __repr__(self):
         """Return the string representation of a STAC object."""
-        text = 'stac("{}")'.format(self.url)
-        return text
+        return 'stac("{}")'.format(self.url)
 
 
     def __str__(self):
