@@ -28,8 +28,7 @@ class stac:
 
     def catalog(self):
         """Return the root catalog or collection."""
-        url = '{}/stac'.format(self._url)
-        data = self._get(url)
+        data = self._get('{}/stac'.format(self._url))
         return catalog(data)
 
 
