@@ -123,8 +123,20 @@ def test_stac():
         'description': 'INPE STAC Catalog',
         'links': [
             {'href': '{}/stac'.format(service.url), 'rel': 'self'},
-            {'href': '{}/collections/CB4_AWFI'.format(service.url), 'rel': 'child', 'title': 'CB4_AWFI'},
-            {'href': '{}/collections/CB4_MUX'.format(service.url), 'rel': 'child', 'title': 'CB4_MUX'}
+            {'href': '{}/collections/CB4A_MUX_L2_DN'.format(service.url), 'rel': 'child', 'title': 'CB4A_MUX_L2_DN'},
+            {'href': '{}/collections/CB4A_MUX_L4_DN'.format(service.url), 'rel': 'child', 'title': 'CB4A_MUX_L4_DN'},
+            {'href': '{}/collections/CB4A_WFI_L2_DN'.format(service.url), 'rel': 'child', 'title': 'CB4A_WFI_L2_DN'},
+            {'href': '{}/collections/CB4A_WFI_L4_DN'.format(service.url), 'rel': 'child', 'title': 'CB4A_WFI_L4_DN'},
+            {'href': '{}/collections/CB4A_WPM_L2_DN'.format(service.url), 'rel': 'child', 'title': 'CB4A_WPM_L2_DN'},
+            {'href': '{}/collections/CB4_AWFI_L4_DN'.format(service.url), 'rel': 'child', 'title': 'CB4_AWFI_L4_DN'},
+            {'href': '{}/collections/CB4_AWFI_L4_SR'.format(service.url), 'rel': 'child', 'title': 'CB4_AWFI_L4_SR'},
+            {'href': '{}/collections/CB4_MUX_L4_DN'.format(service.url), 'rel': 'child', 'title': 'CB4_MUX_L4_DN'},
+            {'href': '{}/collections/CB4_MUX_L4_SR'.format(service.url), 'rel': 'child', 'title': 'CB4_MUX_L4_SR'},
+            {'href': '{}/collections/CB4_PAN10M_L2_DN'.format(service.url), 'rel': 'child', 'title': 'CB4_PAN10M_L2_DN'},
+            {'href': '{}/collections/CB4_PAN10M_L4_DN'.format(service.url), 'rel': 'child', 'title': 'CB4_PAN10M_L4_DN'},
+            {'href': '{}/collections/CB4_PAN5M_L4_DN'.format(service.url), 'rel': 'child', 'title': 'CB4_PAN5M_L4_DN'},
+            {'href': '{}/collections/LT5_TM_L2_DN'.format(service.url), 'rel': 'child', 'title': 'LT5_TM_L2_DN'},
+            {'href': '{}/collections/LT5_TM_L4_DN'.format(service.url), 'rel': 'child', 'title': 'LT5_TM_L4_DN'}
         ]
     }
 
