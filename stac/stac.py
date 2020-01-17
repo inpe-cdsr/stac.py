@@ -27,7 +27,7 @@ class stac:
 
 
     def catalog(self):
-        """Return the root catalog or collection."""
+        """Return the root catalog."""
         data = self._get('{}/stac'.format(self._url))
         return catalog(data)
 
@@ -43,8 +43,8 @@ class stac:
 
 
     def collections(self):
-        """TODO."""
-        pass
+        """Return the collections."""
+        return self._get('{}/collections'.format(self._url))
 
 
     def search(self, filter=None):
