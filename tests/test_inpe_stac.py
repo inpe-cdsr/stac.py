@@ -137,21 +137,94 @@ def test_collections():
 
 '''
 def test_collections_collection_id():
-    # TODO
     """/collections/<collection_id>"""
 
     service = stac(url)
 
-    expected = {}
+    expected = {
+        "collections": [
+            {
+                "stac_version": "0.7",
+                "id": "CB4A_MUX_L2_DN",
+                "title": "CB4A_MUX_L2_DN",
+                "description": "CB4A MUX Level2 DN dataset",
+                "license": "",
+                "extent": [],
+                "links": [
+                    {
+                        "href": "{}/collections/CB4A_MUX_L2_DN".format(service.url),
+                        "rel": "self"
+                    },
+                    {
+                        "href": "{}/stac/".format(service.url),
+                        "rel": "root"
+                    }
+                ]
+            },
+            {
+                "stac_version": "0.7",
+                "id": "CB4A_MUX_L4_DN",
+                "title": "CB4A_MUX_L4_DN",
+                "description": "CB4A MUX Level4 DN dataset",
+                "license": "",
+                "extent": [],
+                "links": [
+                    {
+                        "href": "{}/collections/CB4A_MUX_L4_DN".format(service.url),
+                        "rel": "self"
+                    },
+                    {
+                        "href": "{}/stac/".format(service.url),
+                        "rel": "root"
+                    }
+                ]
+            },
+            {
+                "stac_version": "0.7",
+                "id": "CB4A_WFI_L2_DN",
+                "title": "CB4A_WFI_L2_DN",
+                "description": "CB4A WFI Level2 DN dataset",
+                "license": "",
+                "extent": [],
+                "links": [
+                    {
+                        "href": "{}/collections/CB4A_WFI_L2_DN".format(service.url),
+                        "rel": "self"
+                    },
+                    {
+                        "href": "{}/stac/".format(service.url),
+                        "rel": "root"
+                    }
+                ]
+            },
+            {
+                "stac_version": "0.7",
+                "id": "CB4A_WPM_L2_DN",
+                "title": "CB4A_WPM_L2_DN",
+                "description": "CB4A WPM Level2 DN dataset",
+                "license": "",
+                "extent": [],
+                "links": [
+                    {
+                        "href": "{}/collections/CB4A_WPM_L2_DN".format(service.url),
+                        "rel": "self"
+                    },
+                    {
+                        "href": "{}/stac/".format(service.url),
+                        "rel": "root"
+                    }
+                ]
+            }
+        ]
+    }
 
-    result = service.catalog()
 
-    # print('\n expected: ', expected)
-    # print('\n result: ', result)
+    result = service.collections()
 
     assert expected == result
+'''
 
-
+'''
 def test_collections_collection_id_items():
     # TODO
     """/collections/<collection_id>/items"""

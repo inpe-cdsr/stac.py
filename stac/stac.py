@@ -41,6 +41,14 @@ class stac:
         """Return the list of conformance classes that the server conforms to."""
         return self._get('{}/conformance'.format(self._url))
 
+    # def collections(self, collection_id=None):
+    #     """Return the collections."""
+    #     if collection_id is None:
+    #         collection_id = ''
+    #     else:
+    #         collection_id = '/' + str(collection_id)
+
+    #     return self._get('{0}/collections{1}'.format(self._url, collection_id))
 
     def collections(self):
         """Return the collections."""
