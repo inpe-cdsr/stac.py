@@ -54,6 +54,8 @@ class stac:
 
     def collections_items(self, collection_id=None, item_id=None, params=None):
         """Return the collections."""
+        list_params = []
+
         if collection_id is None:
             raise Exception('collection_id is missing')
         else:
@@ -64,13 +66,19 @@ class stac:
         else:
             item_id = '/' + str(item_id)
 
-        list_params = []
         if params is None:
             list_params = ''
         else:
-            list_params.append('bbox=' + ','.join(map(str, params['bbox'])))
-            list_params.append('time=' + '/'.join(params['time']))
-            list_params.append('limit=' + str(params['limit']))
+            if 'bbox' in params:
+                list_params.append('bbox=' + ','.join(map(str, params['bbox'])))
+            if 'time' in params:
+                list_params.append('time=' + '/'.join(params['time']))
+            if 'type' in params:
+                list_params.append('type=' + params['type'])
+            if 'page' in params:
+                list_params.append('page=' + str(params['page']))
+            if 'limit' in params:
+                list_params.append('limit=' + str(params['limit']))
 
             list_params = '?' + '&'.join(list_params)
 
