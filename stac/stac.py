@@ -52,19 +52,29 @@ class stac:
         return self._get('{0}/collections{1}'.format(self._url, collection_id))
 
 
-    # def collections_items(self, collection_id=None, item_id=None):
-    #     """Return the collections."""
-    #     if collection_id is None:
-    #         raise Exception('collection_id is missing')
-    #     else:
-    #         collection_id = '/' + str(collection_id)
+    def collections_items(self, collection_id=None, item_id=None, params=None):
+        """Return the collections."""
+        if collection_id is None:
+            raise Exception('collection_id is missing')
+        else:
+            collection_id = '/' + str(collection_id)
 
-    #     if item_id is None:
-    #         item_id = ''
-    #     else:
-    #         item_id = '/' + str(item_id)
+        if item_id is None:
+            item_id = ''
+        else:
+            item_id = '/' + str(item_id)
 
-    #     return self._get('{0}/collections{1}items{2}'.format(self._url, collection_id, item_id))
+        list_params = []
+        if params is None:
+            list_params = ''
+        else:
+            list_params.append('bbox=' + ','.join(map(str, params['bbox'])))
+            list_params.append('time=' + '/'.join(params['time']))
+            list_params.append('limit=' + str(params['limit']))
+
+            list_params = '?' + '&'.join(list_params)
+
+        return self._get('{0}/collections{1}/items{2}{3}'.format(self._url, collection_id, item_id, list_params))
 
 
     def search(self, filter=None):
