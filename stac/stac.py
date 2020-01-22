@@ -7,7 +7,7 @@
 #
 """Python API client wrapper for STAC."""
 
-import requests
+from requests import get
 
 from .utils import catalog
 
@@ -69,6 +69,7 @@ class stac:
         if params is None:
             list_params = ''
         else:
+            # TODO: https://2.python-requests.org/en/master/user/quickstart/#passing-parameters-in-urls
             if 'bbox' in params:
                 list_params.append('bbox=' + ','.join(map(str, params['bbox'])))
             if 'time' in params:
@@ -128,7 +129,7 @@ class stac:
 
         :raises ValueError: If the response body does not contain a valid json.
         """
-        response = requests.get(url, params=params)
+        response = get(url, params=params)
 
         response.raise_for_status()
 
