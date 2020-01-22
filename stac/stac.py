@@ -41,18 +41,30 @@ class stac:
         """Return the list of conformance classes that the server conforms to."""
         return self._get('{}/conformance'.format(self._url))
 
-    # def collections(self, collection_id=None):
+
+    def collections(self, collection_id=None):
+        """Return the collections."""
+        if collection_id is None:
+            collection_id = ''
+        else:
+            collection_id = '/' + str(collection_id)
+
+        return self._get('{0}/collections{1}'.format(self._url, collection_id))
+
+
+    # def collections_items(self, collection_id=None, item_id=None):
     #     """Return the collections."""
     #     if collection_id is None:
-    #         collection_id = ''
+    #         raise Exception('collection_id is missing')
     #     else:
     #         collection_id = '/' + str(collection_id)
 
-    #     return self._get('{0}/collections{1}'.format(self._url, collection_id))
+    #     if item_id is None:
+    #         item_id = ''
+    #     else:
+    #         item_id = '/' + str(item_id)
 
-    def collections(self):
-        """Return the collections."""
-        return self._get('{}/collections'.format(self._url))
+    #     return self._get('{0}/collections{1}items{2}'.format(self._url, collection_id, item_id))
 
 
     def search(self, filter=None):
