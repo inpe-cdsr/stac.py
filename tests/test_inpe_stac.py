@@ -400,6 +400,11 @@ def test_stac_search():
     }
 
     expected = {
+        "meta": {
+            "page": 1,
+            "limit": 2,
+            "returned": 2
+        },
         "type": "FeatureCollection",
         "features": [
             {
