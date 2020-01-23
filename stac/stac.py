@@ -74,8 +74,6 @@ class stac:
                 list_params.append('bbox=' + ','.join(map(str, params['bbox'])))
             if 'time' in params:
                 list_params.append('time=' + '/'.join(params['time']))
-            if 'type' in params:
-                list_params.append('type=' + params['type'])
             if 'page' in params:
                 list_params.append('page=' + str(params['page']))
             if 'limit' in params:
@@ -86,16 +84,28 @@ class stac:
         return self._get('{0}/collections{1}/items{2}{3}'.format(self._url, collection_id, item_id, list_params))
 
 
-    def search(self, filter=None):
+    def search(self, params=None):
         """Retrieve Items matching a filter.
 
-        :param filter: (optional) A dictionary with valid STAC query parameters.
-        :type filter: dict
+        :param params: (optional) A dictionary with valid STAC query parameters.
+        :type params: dict
 
         :returns: A feature collection.
         :rtype: dict
         """
-        return self._get('{}/stac/search'.format(self._url), params=filter)
+        if params is None:
+            params = {}
+        else:
+            if 'bbox' in params:
+                params['bbox'] = ','.join(map(str, params['bbox']))
+            # if 'intersects' in params:
+            #     dict_params['intersects'] = params['intersects']
+            # if 'ids' in params:
+            #     dict_params['ids'] = ','.join(params['ids'])
+            # if 'collections' in params:
+            #     dict_params['collections'] = ','.join(params['collections'])
+
+        return self._get('{}/stac/search'.format(self._url), params=params)
 
 
     @property

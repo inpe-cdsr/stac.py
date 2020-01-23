@@ -52,7 +52,7 @@ Export STAC_SERVER_URL environment variable with the URL of STAC server in order
 
 .. code-block:: shell
 
-        $ export STAC_SERVER_URL=http://localhost:8089/inpe-stac/
+        $ export STAC_SERVER_URL=http://localhost:8089/inpe-stac
 
 
 Run the tests:

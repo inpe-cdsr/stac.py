@@ -10,5 +10,5 @@
 pydocstyle stac && \
 isort --check-only --diff --recursive **/*.py && \
 check-manifest --ignore ".travis-*" --ignore ".readthedocs.*" && \
-pytest -s && \
+pytest -s -vv && \
 sphinx-build -qnW --color -b doctest doc/sphinx/ doc/sphinx/_build/doctest
