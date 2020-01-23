@@ -445,7 +445,11 @@ def test_stac_search():
                     -0.284565
                 ],
                 "properties": {
-                    "datetime": "2020-01-20T00:00:00"
+                    "datetime": "2020-01-20T00:00:00",
+                    'path': '150',
+                    'row': '105',
+                    'satellite': 'CBERS4',
+                    'sensor': 'AWFI'
                 },
                 "assets": {
                     "blue": {
@@ -521,7 +525,11 @@ def test_stac_search():
                     -5.63972
                 ],
                 "properties": {
-                    "datetime": "2020-01-20T00:00:00"
+                    "datetime": "2020-01-20T00:00:00",
+                    'path': '150',
+                    'row': '111',
+                    'satellite': 'CBERS4',
+                    'sensor': 'AWFI'
                 },
                 "assets": {
                     "blue": {
