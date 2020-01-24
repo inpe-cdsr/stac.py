@@ -589,22 +589,107 @@ def test_collections_collection_id_items():
 
     assert expected == result
 
-'''
+
 def test_collections_collection_id_items_item_id():
-    # TODO
     """/collections/<collection_id>/items/<item_id>"""
 
     service = stac(url)
 
-    expected = {}
+    collection_id = 'CBERS4A_MUX_L2_DN'
+    item_id = 'CBERS4A_MUX15911220200110'
+    params = {
+        'bbox': [ -68.0273437, -25.0059726, -34.9365234, 0.3515602 ],
+        'time': [ '2019-12-22T00:00:00', '2020-01-22T23:59:00' ],
+        'limit': 2
+    }
 
-    result = service.catalog()
+    expected = {
+        "type": "Feature",
+        "id": "CBERS4A_MUX15911220200110",
+        "collection": "CBERS4A_MUX_L2_DN",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+            [
+                [
+                -44.7393,
+                1.3427
+                ],
+                [
+                -44.7394,
+                0.269309
+                ],
+                [
+                -43.7009,
+                0.269242
+                ],
+                [
+                -43.7006,
+                1.34236
+                ],
+                [
+                -44.7393,
+                1.3427
+                ]
+            ]
+            ]
+        },
+        "bbox": [
+            -44.7394,
+            0.269242,
+            -43.7006,
+            1.3427
+        ],
+        "properties": {
+            "datetime": "2020-01-10T00:00:00",
+            'path': '159',
+            'row': '112',
+            'satellite': 'CBERS4A',
+            'sensor': 'MUX'
+        },
+        "assets": {
+            "blue": {
+            "href": "{}/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_10.13_29_00_ETC2/159_112_0/2_NN_UTM_WGS84/CBERS_4A_MUX_20200110_159_112_L2_BAND5.tif".format(ASSETS_URL)
+            },
+            "green": {
+            "href": "{}/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_10.13_29_00_ETC2/159_112_0/2_NN_UTM_WGS84/CBERS_4A_MUX_20200110_159_112_L2_BAND6.tif".format(ASSETS_URL)
+            },
+            "nir": {
+            "href": "{}/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_10.13_29_00_ETC2/159_112_0/2_NN_UTM_WGS84/CBERS_4A_MUX_20200110_159_112_L2_BAND8.tif".format(ASSETS_URL)
+            },
+            "red": {
+            "href": "{}/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_10.13_29_00_ETC2/159_112_0/2_NN_UTM_WGS84/CBERS_4A_MUX_20200110_159_112_L2_BAND7.tif".format(ASSETS_URL)
+            },
+            "thumbnail": {
+            "href": "{}/datastore/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_10.13_29_00_ETC2/159_112_0/2_NN_UTM_WGS84/CBERS_4A_MUX_20200110_159_112.png".format(ASSETS_URL)
+            }
+        },
+        "links": [
+            {
+            "href": "{}/collections/CBERS4A_MUX_L2_DN/items/CBERS4A_MUX15911220200110".format(url),
+            "rel": "self"
+            },
+            {
+            "href": "{}/collections/CBERS4A_MUX_L2_DN".format(url),
+            "rel": "parent"
+            },
+            {
+            "href": "{}/collections/CBERS4A_MUX_L2_DN".format(url),
+            "rel": "collection"
+            },
+            {
+            "href": "{}/stac".format(url),
+            "rel": "root"
+            }
+        ]
+    }
 
-    # print('\n expected: ', expected)
-    # print('\n result: ', result)
+    result = service.collections_items(
+        collection_id=collection_id, item_id=item_id, params=params
+    )
 
     assert expected == result
-'''
+
 
 def test_stac():
     """/stac"""
