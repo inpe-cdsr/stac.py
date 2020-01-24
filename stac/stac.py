@@ -53,7 +53,21 @@ class stac:
 
 
     def collections_items(self, collection_id=None, item_id=None, params=None):
-        """Return the collections."""
+        """Return the items of collections.
+
+        :param collection_id: (mandatory) A string with a collection id.
+        :type collection_id: str
+
+        :param item_id: (optional) A string with an item id.
+        :type item_id: str
+
+        :param params: (optional) A dictionary with valid STAC query parameters.
+        :type params: dict
+
+        :returns: A feature collection, when there are more than one result, or a feature,
+        when there is only one result.
+        :rtype: dict
+        """
         list_params = []
 
         if collection_id is None:
@@ -67,21 +81,21 @@ class stac:
             item_id = '/' + str(item_id)
 
         if params is None:
-            list_params = ''
+            params = {}
         else:
-            # TODO: https://2.python-requests.org/en/master/user/quickstart/#passing-parameters-in-urls
             if 'bbox' in params:
-                list_params.append('bbox=' + ','.join(map(str, params['bbox'])))
-            if 'time' in params:
-                list_params.append('time=' + '/'.join(params['time']))
-            if 'page' in params:
-                list_params.append('page=' + str(params['page']))
-            if 'limit' in params:
-                list_params.append('limit=' + str(params['limit']))
+                params['bbox'] = ','.join(map(str, params['bbox']))
+            # if 'intersects' in params:
+            #     params['intersects'] = params['intersects']
+            # if 'ids' in params:
+            #     params['ids'] = ','.join(params['ids'])
+            # if 'collections' in params:
+            #     params['collections'] = ','.join(params['collections'])
 
-            list_params = '?' + '&'.join(list_params)
-
-        return self._get('{0}/collections{1}/items{2}{3}'.format(self._url, collection_id, item_id, list_params))
+        return self._get(
+            '{0}/collections{1}/items{2}'.format(self._url, collection_id, item_id),
+            params=params
+        )
 
 
     def search(self, params=None):
@@ -99,11 +113,11 @@ class stac:
             if 'bbox' in params:
                 params['bbox'] = ','.join(map(str, params['bbox']))
             # if 'intersects' in params:
-            #     dict_params['intersects'] = params['intersects']
+            #     params['intersects'] = params['intersects']
             # if 'ids' in params:
-            #     dict_params['ids'] = ','.join(params['ids'])
+            #     params['ids'] = ','.join(params['ids'])
             # if 'collections' in params:
-            #     dict_params['collections'] = ','.join(params['collections'])
+            #     params['collections'] = ','.join(params['collections'])
 
         return self._get('{}/stac/search'.format(self._url), params=params)
 

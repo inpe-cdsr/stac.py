@@ -415,11 +415,16 @@ def test_collections_collection_id_items():
     collection_id = 'CBERS4A_MUX_L2_DN'
     params = {
         'bbox': [ -68.0273437, -25.0059726, -34.9365234, 0.3515602 ],
-        'time': [ '2019-12-22T00:00:00', '2020-01-22T23:59:00' ],
+        'time': '2019-12-22T00:00:00/2020-01-22T23:59:00',
         'limit': 2
     }
 
     expected = {
+        "meta": {
+            "page": 1,
+            "limit": 2,
+            "returned": 2
+        },
         "type": "FeatureCollection",
         "features": [
             {
@@ -599,7 +604,7 @@ def test_collections_collection_id_items_item_id():
     item_id = 'CBERS4A_MUX15911220200110'
     params = {
         'bbox': [ -68.0273437, -25.0059726, -34.9365234, 0.3515602 ],
-        'time': [ '2019-12-22T00:00:00', '2020-01-22T23:59:00' ],
+        'time': '2019-12-22T00:00:00/2020-01-22T23:59:00',
         'limit': 2
     }
 
