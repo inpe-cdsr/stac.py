@@ -49,95 +49,295 @@ def test_conformance():
 
     assert expected == result
 '''
-'''
-# test
+
 def test_collections():
     """/collections"""
 
     service = stac(url)
 
     expected = {
+        "meta": {
+            "returned": 15
+        },
         "collections": [
             {
-                "stac_version": "0.7",
-                "id": "CB4A_MUX_L2_DN",
-                "title": "CB4A_MUX_L2_DN",
-                "description": "CB4A MUX Level2 DN dataset",
-                "license": "",
-                "extent": [],
-                "links": [
-                    {
-                        "href": "{}/collections/CB4A_MUX_L2_DN".format(service.url),
-                        "rel": "self"
-                    },
-                    {
-                        "href": "{}/stac/".format(service.url),
-                        "rel": "root"
-                    }
-                ]
+            "stac_version": "0.7",
+            "id": "CBERS4A_MUX_L2_DN",
+            "title": "CBERS4A_MUX_L2_DN",
+            "description": "CBERS4A MUX Level2 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                    "rel": "self"
+                },
+                {
+                    "href": "http://localhost:8089/inpe-stac/stac/",
+                    "rel": "root"
+                }
+            ]
             },
             {
-                "stac_version": "0.7",
-                "id": "CB4A_MUX_L4_DN",
-                "title": "CB4A_MUX_L4_DN",
-                "description": "CB4A MUX Level4 DN dataset",
-                "license": "",
-                "extent": [],
-                "links": [
-                    {
-                        "href": "{}/collections/CB4A_MUX_L4_DN".format(service.url),
-                        "rel": "self"
-                    },
-                    {
-                        "href": "{}/stac/".format(service.url),
-                        "rel": "root"
-                    }
-                ]
+            "stac_version": "0.7",
+            "id": "CBERS4A_MUX_L4_DN",
+            "title": "CBERS4A_MUX_L4_DN",
+            "description": "CBERS4A MUX Level4 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L4_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
             },
             {
-                "stac_version": "0.7",
-                "id": "CB4A_WFI_L2_DN",
-                "title": "CB4A_WFI_L2_DN",
-                "description": "CB4A WFI Level2 DN dataset",
-                "license": "",
-                "extent": [],
-                "links": [
-                    {
-                        "href": "{}/collections/CB4A_WFI_L2_DN".format(service.url),
-                        "rel": "self"
-                    },
-                    {
-                        "href": "{}/stac/".format(service.url),
-                        "rel": "root"
-                    }
-                ]
+            "stac_version": "0.7",
+            "id": "CBERS4A_WFI_L2_DN",
+            "title": "CBERS4A_WFI_L2_DN",
+            "description": "CBERS4A WFI Level2 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L2_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
             },
             {
-                "stac_version": "0.7",
-                "id": "CB4A_WPM_L2_DN",
-                "title": "CB4A_WPM_L2_DN",
-                "description": "CB4A WPM Level2 DN dataset",
-                "license": "",
-                "extent": [],
-                "links": [
-                    {
-                        "href": "{}/collections/CB4A_WPM_L2_DN".format(service.url),
-                        "rel": "self"
-                    },
-                    {
-                        "href": "{}/stac/".format(service.url),
-                        "rel": "root"
-                    }
-                ]
+            "stac_version": "0.7",
+            "id": "CBERS4A_WFI_L4_DN",
+            "title": "CBERS4A_WFI_L4_DN",
+            "description": "CBERS4A WFI Level4 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L4_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "CBERS4A_WPM_L2_DN",
+            "title": "CBERS4A_WPM_L2_DN",
+            "description": "CBERS4A WPM Level2 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WPM_L2_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "CBERS4_AWFI_L4_DN",
+            "title": "CBERS4_AWFI_L4_DN",
+            "description": "CBERS4 AWFI Level4 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "CBERS4_AWFI_L4_SR",
+            "title": "CBERS4_AWFI_L4_SR",
+            "description": "CBERS4 AWFI Level4 SR dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_SR",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "CBERS4_MUX_L2_DN",
+            "title": "CBERS4_MUX_L2_DN",
+            "description": "CBERS4 MUX Level2 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L2_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "CBERS4_MUX_L4_DN",
+            "title": "CBERS4_MUX_L4_DN",
+            "description": "CBERS4 MUX Level4 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "CBERS4_MUX_L4_SR",
+            "title": "CBERS4_MUX_L4_SR",
+            "description": "CBERS4 MUX Level4 SR dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_SR",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "CBERS4_PAN10M_L2_DN",
+            "title": "CBERS4_PAN10M_L2_DN",
+            "description": "CBERS4 PAN10M Level2 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN10M_L2_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "CBERS4_PAN10M_L4_DN",
+            "title": "CBERS4_PAN10M_L4_DN",
+            "description": "CBERS4 PAN10M Level4 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN10M_L4_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "CBERS4_PAN5M_L4_DN",
+            "title": "CBERS4_PAN5M_L4_DN",
+            "description": "CBERS4 PAN5M Level4 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN5M_L4_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "LANDSAT5_TM_L2_DN",
+            "title": "LANDSAT5_TM_L2_DN",
+            "description": "LANDSAT5 TM Level2 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/LANDSAT5_TM_L2_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
+            },
+            {
+            "stac_version": "0.7",
+            "id": "LANDSAT5_TM_L4_DN",
+            "title": "LANDSAT5_TM_L4_DN",
+            "description": "LANDSAT5 TM Level4 DN dataset",
+            "license": "",
+            "extent": [],
+            "links": [
+                {
+                "href": "http://localhost:8089/inpe-stac/collections/LANDSAT5_TM_L4_DN",
+                "rel": "self"
+                },
+                {
+                "href": "http://localhost:8089/inpe-stac/stac/",
+                "rel": "root"
+                }
+            ]
             }
         ]
     }
-
 
     result = service.collections()
 
     assert expected == result
 
+'''
 # test
 def test_collections_collection_id():
     """/collections/<collection_id>"""
@@ -362,30 +562,103 @@ def test_collections_collection_id_items_item_id():
 
     assert expected == result
 '''
-'''
-# test
+
 def test_stac():
     """/stac"""
 
     service = stac(url)
 
     expected = {
-        'stac_version': '0.7',
-        'id': 'inpe-stac',
-        'description': 'INPE STAC Catalog',
-        'links': [
-            {'href': '{}/stac'.format(service.url), 'rel': 'self'},
-            {'href': '{}/collections/CB4A_MUX_L2_DN'.format(service.url), 'rel': 'child', 'title': 'CB4A_MUX_L2_DN'},
-            {'href': '{}/collections/CB4A_MUX_L4_DN'.format(service.url), 'rel': 'child', 'title': 'CB4A_MUX_L4_DN'},
-            {'href': '{}/collections/CB4A_WFI_L2_DN'.format(service.url), 'rel': 'child', 'title': 'CB4A_WFI_L2_DN'},
-            {'href': '{}/collections/CB4A_WPM_L2_DN'.format(service.url), 'rel': 'child', 'title': 'CB4A_WPM_L2_DN'}
+        "stac_version": "0.7",
+        "id": "inpe-stac",
+        "description": "INPE STAC Catalog",
+        "links": [
+            {
+                "href": "{}/stac".format(service.url),
+                "rel": "self"
+            },
+                {
+                "href": "{}/collections/CBERS4A_MUX_L2_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4A_MUX_L2_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4A_MUX_L4_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4A_MUX_L4_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4A_WFI_L2_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4A_WFI_L2_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4A_WFI_L4_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4A_WFI_L4_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4A_WPM_L2_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4A_WPM_L2_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4_AWFI_L4_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4_AWFI_L4_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4_AWFI_L4_SR".format(service.url),
+                "rel": "child",
+                "title": "CBERS4_AWFI_L4_SR"
+            },
+            {
+                "href": "{}/collections/CBERS4_MUX_L2_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4_MUX_L2_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4_MUX_L4_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4_MUX_L4_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4_MUX_L4_SR".format(service.url),
+                "rel": "child",
+                "title": "CBERS4_MUX_L4_SR"
+            },
+            {
+                "href": "{}/collections/CBERS4_PAN10M_L2_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4_PAN10M_L2_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4_PAN10M_L4_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4_PAN10M_L4_DN"
+            },
+            {
+                "href": "{}/collections/CBERS4_PAN5M_L4_DN".format(service.url),
+                "rel": "child",
+                "title": "CBERS4_PAN5M_L4_DN"
+            },
+            {
+                "href": "{}/collections/LANDSAT5_TM_L2_DN".format(service.url),
+                "rel": "child",
+                "title": "LANDSAT5_TM_L2_DN"
+            },
+            {
+                "href": "{}/collections/LANDSAT5_TM_L4_DN".format(service.url),
+                "rel": "child",
+                "title": "LANDSAT5_TM_L4_DN"
+            }
         ]
     }
 
     result = service.catalog()
 
     assert expected == result
-'''
+
 
 def test_stac_search():
     """/stac/search"""
