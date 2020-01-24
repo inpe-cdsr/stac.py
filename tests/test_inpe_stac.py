@@ -49,7 +49,7 @@ def test_conformance():
 
     assert expected == result
 '''
-'''
+
 def test_collections():
     """/collections"""
 
@@ -336,7 +336,7 @@ def test_collections():
     result = service.collections()
 
     assert expected == result
-'''
+
 
 def test_collections_collection_id():
     """/collections/<collection_id>"""
@@ -406,7 +406,7 @@ def test_collections_collection_id__not_found_collection():
 
     assert expected == result
 
-'''
+
 def test_collections_collection_id_items():
     """/collections/<collection_id>/items"""
 
@@ -460,7 +460,11 @@ def test_collections_collection_id_items():
                     1.3427
                 ],
                 "properties": {
-                    "datetime": "2020-01-10T00:00:00"
+                    "datetime": "2020-01-10T00:00:00",
+                    'path': '159',
+                    'row': '112',
+                    'satellite': 'CBERS4A',
+                    'sensor': 'MUX'
                 },
                 "assets": {
                     "blue": {
@@ -536,7 +540,11 @@ def test_collections_collection_id_items():
                     0.548619
                 ],
                 "properties": {
-                    "datetime": "2020-01-10T00:00:00"
+                    "datetime": "2020-01-10T00:00:00",
+                    'path': '159',
+                    'row': '113',
+                    'satellite': 'CBERS4A',
+                    'sensor': 'MUX'
                 },
                 "assets": {
                     "blue": {
@@ -580,7 +588,7 @@ def test_collections_collection_id_items():
     result = service.collections_items(collection_id=collection_id, params=params)
 
     assert expected == result
-'''
+
 '''
 def test_collections_collection_id_items_item_id():
     # TODO
