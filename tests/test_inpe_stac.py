@@ -49,7 +49,7 @@ def test_conformance():
 
     assert expected == result
 '''
-
+'''
 def test_collections():
     """/collections"""
 
@@ -336,41 +336,76 @@ def test_collections():
     result = service.collections()
 
     assert expected == result
-
 '''
-# test
+
 def test_collections_collection_id():
+    """/collections/<collection_id>"""
+
+    service = stac(url)
+
+    collection_id = 'CBERS4A_MUX_L2_DN'
+
+    expected = {
+        "stac_version": "0.7",
+        "id": "CBERS4A_MUX_L2_DN",
+        "title": "CBERS4A_MUX_L2_DN",
+        "description": "CBERS4A MUX Level2 DN dataset",
+        "license": None,
+        "properties": {},
+        "extent": {
+            "spatial": [
+                -37.8691,
+                -37.8691,
+                3.03714,
+                -40.9072
+            ],
+            "time": [
+                "2019-12-30",
+                "2020-01-10"
+            ]
+        },
+        "links": [
+            {
+            "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+            "rel": "self"
+            },
+            {
+            "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
+            "rel": "items"
+            },
+            {
+            "href": "http://localhost:8089/inpe-stac/collections",
+            "rel": "parent"
+            },
+            {
+            "href": "http://localhost:8089/inpe-stac/collections",
+            "rel": "root"
+            },
+            {
+            "href": "http://localhost:8089/inpe-stac/stac",
+            "rel": "root"
+            }
+        ]
+    }
+
+    result = service.collections(collection_id=collection_id)
+
+    assert expected == result
+
+
+def test_collections_collection_id__not_found_collection():
     """/collections/<collection_id>"""
 
     service = stac(url)
 
     collection_id = 'CB4A_MUX_L2_DN'
 
-    expected = {
-        'stac_version': '0.7',
-        'id': 'CB4A_MUX_L2_DN',
-        'title': 'CB4A_MUX_L2_DN',
-        'description': 'CB4A MUX Level2 DN dataset',
-        'license': None,
-        'properties': {},
-        'extent': {
-            'spatial': [-37.8691, -37.8691, 3.03714, -43.349],
-            'time': ['2019-12-31', '2020-01-10']
-        },
-        'links': [
-            {'href': '{}/collections/CB4A_MUX_L2_DN', 'rel': 'self'},
-            {'href': '{}/collections/CB4A_MUX_L2_DN/items', 'rel': 'items'},
-            {'href': '{}/collections', 'rel': 'parent'},
-            {'href': '{}/collections', 'rel': 'root'},
-            {'href': '{}/stac', 'rel': 'root'}
-        ]
-    }
-
+    expected = {}
 
     result = service.collections(collection_id=collection_id)
 
     assert expected == result
-'''
+
 '''
 def test_collections_collection_id_items():
     """/collections/<collection_id>/items"""
