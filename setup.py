@@ -43,7 +43,9 @@ setup_requires = [
 ]
 
 install_requires = [
+    'Click>=7.0',
     'requests>=2.20',
+
 ]
 
 packages = find_packages()
@@ -68,6 +70,9 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
+        'console_scripts': [
+            'stac = stac.cli:cli',
+        ],
     },
     extras_require=extras_require,
     install_requires=install_requires,

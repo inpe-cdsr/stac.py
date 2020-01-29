@@ -113,3 +113,6 @@ venv.bak/
 
 # Node.JS
 node_modules/
+
+# vscode
+.vscode/

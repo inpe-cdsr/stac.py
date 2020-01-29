@@ -49,7 +49,7 @@ def test_conformance():
 
     assert expected == result
 '''
-
+'''
 def test_collections():
     """/collections"""
 
@@ -978,3 +978,4 @@ def test_stac_search():
     result = service.search(params=params)
 
     assert expected == result
+'''

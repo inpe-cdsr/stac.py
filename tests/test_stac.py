@@ -10,31 +10,29 @@
 
 import os
 
-from stac import stac
+from stac import STAC
 
 url =  os.environ.get('STAC_SERVER_URL', 'http://localhost')
 
-
 def test_creation():
-    service = stac(url)
+    service = STAC(url)
 
     assert url.count(service.url) == 1
 
 
 def test_conformance():
-    service = stac(url)
+    service = STAC(url)
 
-    retval = service.conformance()
+    result = service.conformance()
 
-    assert 'conformsTo' in retval
+    assert 'conformsTo' in result
 
 
 def test_catalog():
-    service = stac(url)
+    service = STAC(url)
 
-    retval = service.catalog()
+    result = service.catalog()
 
     common_keys = { 'stac_version', 'id', 'description', 'links' }
 
-    assert  common_keys <= set(retval.keys())
-
+    assert  common_keys <= set(result.keys())

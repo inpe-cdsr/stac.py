@@ -6,55 +6,34 @@
 # under the terms of the MIT License; see LICENSE file for more details.
 #
 """Utility data structures and algorithms."""
+import requests
 
-class catalog(dict):
-    """The root STAC Catalog."""
 
-    def __init__(self, data):
-        """Initialize instance with dictionary data.
+class Utils:
+    """Utils STAC object."""
 
-        :param data: Dict with catalog metadata.
+    @staticmethod
+    def _get(url, params=None):
+        """Query the STAC service using HTTP GET verb and return the result as a JSON document.
+
+        :param url: The URL to query must be a valid STAC endpoint.
+        :type url: str
+
+        :param params: (optional) Dictionary, list of tuples or bytes to send
+        in the query string for the underlying `Requests`.
+        :type params: dict
+
+        :rtype: dict
+
+        :raises ValueError: If the response body does not contain a valid json.
         """
-        super(catalog, self).__init__(data or {})
+        response = requests.get(url, params=params)
 
+        response.raise_for_status()
 
-    @property
-    def stac_version(self):
-        """Return the STAC version."""
-        return self['stac_version']
+        content_type = response.headers.get('content-type')
 
+        if content_type not in ('application/json', 'application/geo+json'):
+            raise ValueError('HTTP response is not JSON: Content-Type: {}'.format(content_type))
 
-    @property
-    def stac_extensions(self):
-        """Return the list of supported extensions."""
-        return self['stac_extensions'] if 'stac_extensions' in self else None
-
-
-    @property
-    def id(self):
-        """Return the catalog identifier."""
-        return self['id']
-
-
-    @property
-    def title(self):
-        """Return the catalog title."""
-        return self['title'] if 'title' in self else None
-
-
-    @property
-    def description(self):
-        """Return the catalog description."""
-        return self['description']
-
-
-    @property
-    def summaries(self):
-        """Return a summary about the catalog."""
-        return self['summaries'] if 'summaries' in self else None
-
-
-    @property
-    def links(self):
-        """Return a list of resources in the catalog."""
-        return self['links']
+        return response.json()
