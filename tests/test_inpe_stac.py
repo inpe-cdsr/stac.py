@@ -710,7 +710,7 @@ def test_stac():
                 "href": "{}/stac".format(service.url),
                 "rel": "self"
             },
-                {
+            {
                 "href": "{}/collections/CBERS4A_MUX_L2_DN".format(service.url),
                 "rel": "child",
                 "title": "CBERS4A_MUX_L2_DN"
@@ -788,9 +788,19 @@ def test_stac():
         ]
     }
 
-    result = service.catalog()
+    catalog = service.catalog()
 
-    assert expected == result
+    # check all dict/json
+    assert expected == catalog
+
+    # check specifics keys
+    assert expected['stac_version'] == catalog.stac_version
+    assert None == catalog.stac_extensions
+    assert expected['id'] == catalog.id
+    assert None == catalog.title
+    assert expected['description'] == catalog.description
+    assert None == catalog.summaries
+    assert expected['links'] == catalog.links
 
 
 def test_stac_search():

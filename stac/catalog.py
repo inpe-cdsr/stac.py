@@ -20,7 +20,7 @@ class Catalog(dict):
     @property
     def stac_extensions(self):
         """:return: the STAC extensions."""
-        return self['stac_extensions']
+        return self['stac_extensions'] if 'stac_extensions' in self else None
 
     @property
     def id(self):
@@ -40,7 +40,7 @@ class Catalog(dict):
     @property
     def summaries(self):
         """:return: the catalog summaries."""
-        return self['summaries']
+        return self['summaries'] if 'summaries' in self else None
 
     @property
     def links(self):

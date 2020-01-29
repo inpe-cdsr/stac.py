@@ -23,16 +23,16 @@ def test_creation():
 def test_conformance():
     service = STAC(url)
 
-    result = service.conformance()
+    conformance = service.conformance()
 
-    assert 'conformsTo' in result
+    assert 'conformsTo' in conformance
 
 
 def test_catalog():
     service = STAC(url)
 
-    result = service.catalog()
+    catalog = service.catalog()
 
     common_keys = { 'stac_version', 'id', 'description', 'links' }
 
-    assert  common_keys <= set(result.keys())
+    assert  common_keys <= set(catalog.keys())
