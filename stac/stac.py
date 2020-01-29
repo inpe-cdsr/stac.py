@@ -35,10 +35,6 @@ class STAC:
         """Return the list of conformance classes that the server conforms to."""
         return Utils._get('{}/conformance'.format(self._url))
 
-    # def conformance(self):
-    #     """Return the list of conformance classes that the server conforms to."""
-    #     return self._get('{}/conformance'.format(self._url))
-
     # new version
     # def catalog(self):
     #     """
@@ -64,51 +60,54 @@ class STAC:
         """Return the root catalog."""
         return Catalog(Utils._get('{}/stac'.format(self._url)))
 
-    def collections(self):
-        """
-        Collections.
+    # new version
+    # def collections(self):
+    #     """
+    #     Collections.
 
-        :return a dict with the STAC Colletion for every available collection.
-        """
-        if self._collections is None:
-            self.catalog
+    #     :return a dict with the STAC Colletion for every available collection.
+    #     """
+    #     if self._collections is None:
+    #         self.catalog
 
-        for collection_id in self._collections.keys():
-            try:
-                data = Utils._get(f'{self._url}/collections/{collection_id}')
-                self._collections[collection_id] = Collection(data)
-            except:
-                pass
+    #     for collection_id in self._collections.keys():
+    #         try:
+    #             data = Utils._get(f'{self._url}/collections/{collection_id}')
+    #             self._collections[collection_id] = Collection(data)
+    #         except:
+    #             pass
 
-        return self._collections
+    #     return self._collections
 
-    def collection(self, collection_id):
-        """Return the given collection.
+    # new version
+    # def collection(self, collection_id):
+    #     """Return the given collection.
 
-        :param collection_id: A str for a given collection_id.
-        :type collection_id: str
+    #     :param collection_id: A str for a given collection_id.
+    #     :type collection_id: str
 
-        :returns: A STAC Collection.
-        :rtype: dict
-        """
-        if collection_id in self._collections.keys() and \
-            self._collections[collection_id].value() is not None:
-            return self._collections[collection_id]
-        try:
-            data = Utils._get(f'{self._url}/collections/{collection_id}')
-            self._collections[collection_id] = Collection(data)
-        except Exception as e:
-            raise Exception(f'Could not retrieve information for collection: {collection_id}')
-        return self._collections[collection_id]
+    #     :returns: A STAC Collection.
+    #     :rtype: dict
+    #     """
+    #     if collection_id in self._collections.keys() and \
+    #         self._collections[collection_id].value() is not None:
+    #         return self._collections[collection_id]
+    #     try:
+    #         data = Utils._get(f'{self._url}/collections/{collection_id}')
+    #         self._collections[collection_id] = Collection(data)
+    #     except Exception as e:
+    #         raise Exception(f'Could not retrieve information for collection: {collection_id}')
+    #     return self._collections[collection_id]
 
-    # def collections(self, collection_id=None):
-    #     """Return the collections."""
-    #     if collection_id is None:
-    #         collection_id = ''
-    #     else:
-    #         collection_id = '/' + str(collection_id)
+    # old version
+    def collections(self, collection_id=None):
+        """Return the collections."""
+        if collection_id is None:
+            collection_id = ''
+        else:
+            collection_id = '/' + str(collection_id)
 
-    #     return self._get('{0}/collections{1}'.format(self._url, collection_id))
+        return Utils._get('{0}/collections{1}'.format(self._url, collection_id))
 
     def collections_items(self, collection_id=None, item_id=None, params=None):
         """Return the items of collections.
@@ -150,45 +149,46 @@ class STAC:
             # if 'collections' in params:
             #     params['collections'] = ','.join(params['collections'])
 
-        return self._get(
+        return Utils._get(
             '{0}/collections{1}/items{2}'.format(self._url, collection_id, item_id),
             params=params
         )
 
-    def search(self, filter=None):
-        """Retrieve Items matching a filter.
-
-        :param filter: (optional) A dictionary with valid STAC query parameters.
-        :type filter: dict
-        :returns: A GeoJSON FeatureCollection.
-        :rtype: dict
-        """
-        url = '{}/stac/search'.format(self._url)
-        data = Utils._get(url, params=filter)
-        return ItemCollection(data)
-
+    # new version
     # def search(self, params=None):
     #     """Retrieve Items matching a filter.
 
     #     :param params: (optional) A dictionary with valid STAC query parameters.
     #     :type params: dict
-
     #     :returns: A GeoJSON FeatureCollection.
     #     :rtype: dict
     #     """
-    #     if params is None:
-    #         params = {}
-    #     else:
-    #         if 'bbox' in params:
-    #             params['bbox'] = ','.join(map(str, params['bbox']))
-    #         # if 'intersects' in params:
-    #         #     params['intersects'] = params['intersects']
-    #         # if 'ids' in params:
-    #         #     params['ids'] = ','.join(params['ids'])
-    #         # if 'collections' in params:
-    #         #     params['collections'] = ','.join(params['collections'])
+    #     data = Utils._get('{}/stac/search'.format(self._url), params=params)
+    #     return ItemCollection(data)
 
-    #     return self._get('{}/stac/search'.format(self._url), params=params)
+    # old version
+    def search(self, params=None):
+        """Retrieve Items matching a filter.
+
+        :param params: (optional) A dictionary with valid STAC query parameters.
+        :type params: dict
+
+        :returns: A GeoJSON FeatureCollection.
+        :rtype: dict
+        """
+        if params is None:
+            params = {}
+        else:
+            if 'bbox' in params:
+                params['bbox'] = ','.join(map(str, params['bbox']))
+            # if 'intersects' in params:
+            #     params['intersects'] = params['intersects']
+            # if 'ids' in params:
+            #     params['ids'] = ','.join(params['ids'])
+            # if 'collections' in params:
+            #     params['collections'] = ','.join(params['collections'])
+
+        return Utils._get('{}/stac/search'.format(self._url), params=params)
 
     @property
     def url(self):

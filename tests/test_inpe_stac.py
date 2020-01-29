@@ -10,7 +10,7 @@
 
 from os import getenv
 
-from stac import stac
+from stac import STAC
 
 url = getenv('STAC_SERVER_URL', 'http://localhost')
 
@@ -22,7 +22,7 @@ def test_capabilities():
     # TODO
     """/capabilities"""
 
-    service = stac(url)
+    service = STAC(url)
 
     expected = {}
 
@@ -38,7 +38,7 @@ def test_conformance():
     # TODO
     """/conformance"""
 
-    service = stac(url)
+    service = STAC(url)
 
     expected = {}
 
@@ -49,11 +49,11 @@ def test_conformance():
 
     assert expected == result
 '''
-'''
+
 def test_collections():
     """/collections"""
 
-    service = stac(url)
+    service = STAC(url)
 
     expected = {
         "meta": {
@@ -341,7 +341,7 @@ def test_collections():
 def test_collections_collection_id():
     """/collections/<collection_id>"""
 
-    service = stac(url)
+    service = STAC(url)
 
     collection_id = 'CBERS4A_MUX_L2_DN'
 
@@ -396,7 +396,7 @@ def test_collections_collection_id():
 def test_collections_collection_id__not_found_collection():
     """/collections/<collection_id>"""
 
-    service = stac(url)
+    service = STAC(url)
 
     collection_id = 'CB4A_MUX_L2_DN'
 
@@ -410,7 +410,7 @@ def test_collections_collection_id__not_found_collection():
 def test_collections_collection_id_items():
     """/collections/<collection_id>/items"""
 
-    service = stac(url)
+    service = STAC(url)
 
     collection_id = 'CBERS4A_MUX_L2_DN'
     params = {
@@ -598,7 +598,7 @@ def test_collections_collection_id_items():
 def test_collections_collection_id_items_item_id():
     """/collections/<collection_id>/items/<item_id>"""
 
-    service = stac(url)
+    service = STAC(url)
 
     collection_id = 'CBERS4A_MUX_L2_DN'
     item_id = 'CBERS4A_MUX15911220200110'
@@ -699,7 +699,7 @@ def test_collections_collection_id_items_item_id():
 def test_stac():
     """/stac"""
 
-    service = stac(url)
+    service = STAC(url)
 
     expected = {
         "stac_version": "0.7",
@@ -796,7 +796,7 @@ def test_stac():
 def test_stac_search():
     """/stac/search"""
 
-    service = stac(url)
+    service = STAC(url)
 
     params = {
         'bbox': [ -68.0273437, -25.0059726, -34.9365234, 0.3515602 ],
@@ -978,4 +978,3 @@ def test_stac_search():
     result = service.search(params=params)
 
     assert expected == result
-'''
