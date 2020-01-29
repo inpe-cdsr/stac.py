@@ -24,8 +24,8 @@ class STAC:
     def __init__(self, url):
         """Create a STAC client attached to the given host address (an URL)."""
         self._url = url if url[-1] != '/' else url[0:-1]
-        self._collections = None
         self._catalog = None
+        # self._collections = None
 
     # def capabilities(self):
     #     """TODO."""
@@ -55,10 +55,12 @@ class STAC:
     #             self._collections[i.href.split('/')[-1]] = None
     #     return self._collections.keys()
 
-    # old version
+    # rodrigo's version
     def catalog(self):
         """Return the root catalog."""
-        return Catalog(Utils._get('{}/stac'.format(self._url)))
+        if self._catalog is None:
+            self._catalog = Catalog(Utils._get('{}/stac'.format(self._url)))
+        return self._catalog
 
     # new version
     # def collections(self):
@@ -99,7 +101,7 @@ class STAC:
     #         raise Exception(f'Could not retrieve information for collection: {collection_id}')
     #     return self._collections[collection_id]
 
-    # old version
+    # rodrigo's version
     def collections(self, collection_id=None):
         """Return the collections."""
         if collection_id is None:
@@ -125,8 +127,6 @@ class STAC:
         when there is only one result.
         :rtype: dict
         """
-        list_params = []
-
         if collection_id is None:
             raise Exception('collection_id is missing')
         else:
@@ -166,7 +166,7 @@ class STAC:
     #     data = Utils._get('{}/stac/search'.format(self._url), params=params)
     #     return ItemCollection(data)
 
-    # old version
+    # rodrigo's version
     def search(self, params=None):
         """Retrieve Items matching a filter.
 
