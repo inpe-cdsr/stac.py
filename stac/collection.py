@@ -24,6 +24,7 @@ class Extent(dict):
         """:return: the temporal extent."""
         return TemporalExtent(self['temporal'])
 
+
 class SpatialExtent(dict):
     """The Spatial Extent object."""
 
@@ -38,6 +39,7 @@ class SpatialExtent(dict):
     def bbox(self):
         """:return: the bbox of the Spatial Extent."""
         return self['bbox']
+
 
 class TemporalExtent(dict):
     """The Temporal Extent object."""
@@ -99,12 +101,12 @@ class Collection(Catalog):
     @property
     def keywords(self):
         """:return: the Collection list of keywords."""
-        return self['keywords']
+        return self['keywords'] if 'keywords' in self else None
 
     @property
     def version(self):
         """:return: the Collection version."""
-        return self['version']
+        return self['version'] if 'version' in self else None
 
     @property
     def license(self):
@@ -124,7 +126,7 @@ class Collection(Catalog):
     @property
     def properties(self):
         """:return: the Collection properties."""
-        return self['properties']
+        return self['properties'] if 'properties' in self else None
 
     def get_items(self, item_id=None, filter=None):
         """:return: A GeoJSON FeatureCollection of STAC Items from the collection."""

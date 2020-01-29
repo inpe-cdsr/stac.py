@@ -7,10 +7,10 @@
 #
 """Python API client wrapper for STAC."""
 
-from .catalog import Catalog
-from .collection import Collection
-from .utils import Utils
-from .item import ItemCollection
+from stac.catalog import Catalog
+from stac.collection import Collection
+from stac.utils import Utils
+from stac.item import ItemCollection
 
 class STAC:
     """This class implements a Python API client wrapper for STAC.

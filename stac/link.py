@@ -23,9 +23,9 @@ class Link(dict):
     @property
     def type(self):
         """:return: the type of the Link object."""
-        return self['type']
+        return self['type'] if 'type' in self else None
 
     @property
     def title(self):
         """:return: the title of the Link object."""
-        return self['title']
+        return self['title'] if 'title' in self else None
