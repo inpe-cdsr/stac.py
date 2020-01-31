@@ -417,11 +417,11 @@ def test_collections_collection_id_items():
     }
 
     expected = {
-        "meta": {
+        "context": {
             "page": 1,
             "limit": 2,
+            # "matched": 1092873,
             "returned": 2
-            # "total": 10000,
         },
         "type": "FeatureCollection",
         "features": [
