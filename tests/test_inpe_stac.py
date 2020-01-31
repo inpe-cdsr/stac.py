@@ -420,7 +420,7 @@ def test_collections_collection_id_items():
         "context": {
             "page": 1,
             "limit": 2,
-            # "matched": 1092873,
+            "matched": 8,
             "returned": 2
         },
         "type": "FeatureCollection",
@@ -816,6 +816,7 @@ def test_stac_search():
         "meta": {
             "page": 1,
             "limit": 2,
+            'matched': 1933,
             "returned": 2
         },
         "type": "FeatureCollection",
