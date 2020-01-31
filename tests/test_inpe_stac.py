@@ -56,9 +56,6 @@ def test_collections():
     service = STAC(url)
 
     expected = {
-        "meta": {
-            "returned": 15
-        },
         "collections": [
             {
                 "stac_version": "0.7",
@@ -424,6 +421,7 @@ def test_collections_collection_id_items():
             "page": 1,
             "limit": 2,
             "returned": 2
+            # "total": 10000,
         },
         "type": "FeatureCollection",
         "features": [
