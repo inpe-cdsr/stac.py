@@ -467,7 +467,8 @@ def test_collections_collection_id_items():
                     'path': '159',
                     'row': '112',
                     'satellite': 'CBERS4A',
-                    'sensor': 'MUX'
+                    'sensor': 'MUX',
+                    'cloud_cover': 0
                 },
                 "assets": {
                     "blue": {
@@ -547,7 +548,8 @@ def test_collections_collection_id_items():
                     'path': '159',
                     'row': '113',
                     'satellite': 'CBERS4A',
-                    'sensor': 'MUX'
+                    'sensor': 'MUX',
+                    'cloud_cover': 0
                 },
                 "assets": {
                     "blue": {
@@ -648,7 +650,8 @@ def test_collections_collection_id_items_item_id():
             'path': '159',
             'row': '112',
             'satellite': 'CBERS4A',
-            'sensor': 'MUX'
+            'sensor': 'MUX',
+            'cloud_cover': 0
         },
         "assets": {
             "blue": {
@@ -863,7 +866,8 @@ def test_stac_search():
                     'path': '150',
                     'row': '105',
                     'satellite': 'CBERS4',
-                    'sensor': 'AWFI'
+                    'sensor': 'AWFI',
+                    'cloud_cover': 0
                 },
                 "assets": {
                     "blue": {
@@ -943,7 +947,8 @@ def test_stac_search():
                     'path': '150',
                     'row': '111',
                     'satellite': 'CBERS4',
-                    'sensor': 'AWFI'
+                    'sensor': 'AWFI',
+                    'cloud_cover': 0
                 },
                 "assets": {
                     "blue": {
