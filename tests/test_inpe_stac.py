@@ -12,9 +12,9 @@ from os import getenv
 
 from stac import STAC
 
-url = getenv('STAC_SERVER_URL', 'http://localhost')
+url = getenv('STAC_SERVER_URL', 'http://localhost:8089/inpe-stac')
 
-ASSETS_URL = 'http://cdsr.dpi.inpe.br'
+ASSETS_URL = 'http://localhost:8089'
 
 
 '''
