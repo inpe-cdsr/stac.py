@@ -7,6 +7,8 @@
 #
 """Python API client wrapper for STAC."""
 
+# from werkzeug.exceptions import BadRequest
+
 from stac.catalog import Catalog
 from stac.collection import Collection
 from stac.utils import Utils
@@ -167,7 +169,7 @@ class STAC:
     #     return ItemCollection(data)
 
     # rodrigo's version
-    def search(self, params=None):
+    def search(self, params=None, method='GET'):
         """Retrieve Items matching a filter.
 
         :param params: (optional) A dictionary with valid STAC query parameters.
@@ -176,19 +178,22 @@ class STAC:
         :returns: A GeoJSON FeatureCollection.
         :rtype: dict
         """
-        if params is None:
-            params = {}
+        if method == 'GET':
+            if params is not None:
+                if 'bbox' in params:
+                    params['bbox'] = ','.join(map(str, params['bbox']))
+                # if 'intersects' in params:
+                #     params['intersects'] = params['intersects']
+                # if 'ids' in params:
+                #     params['ids'] = ','.join(params['ids'])
+                # if 'collections' in params:
+                #     params['collections'] = ','.join(params['collections'])
+            return Utils._get('{}/stac/search'.format(self._url), params=params)
+        elif method == 'POST':
+            return Utils._post('{}/stac/search'.format(self._url), data=params)
         else:
-            if 'bbox' in params:
-                params['bbox'] = ','.join(map(str, params['bbox']))
-            # if 'intersects' in params:
-            #     params['intersects'] = params['intersects']
-            # if 'ids' in params:
-            #     params['ids'] = ','.join(params['ids'])
-            # if 'collections' in params:
-            #     params['collections'] = ','.join(params['collections'])
-
-        return Utils._get('{}/stac/search'.format(self._url), params=params)
+            # raise BadRequest('Invalid method: {}'.format(method))
+            exit()
 
     @property
     def url(self):
