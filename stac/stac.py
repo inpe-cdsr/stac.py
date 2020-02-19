@@ -7,7 +7,7 @@
 #
 """Python API client wrapper for STAC."""
 
-# from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import BadRequest
 
 from stac.catalog import Catalog
 from stac.collection import Collection
@@ -192,8 +192,7 @@ class STAC:
         elif method == 'POST':
             return Utils._post('{}/stac/search'.format(self._url), data=params)
         else:
-            # raise BadRequest('Invalid method: {}'.format(method))
-            exit()
+            raise BadRequest('Invalid method: {}'.format(method))
 
     @property
     def url(self):

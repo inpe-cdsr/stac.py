@@ -46,7 +46,7 @@ Install in development mode:
 .. code-block:: shell
 
         $ pip3 install -e .[all]
-        $ pip install -r requirements.txt
+        $ pip3 install -r requirements.txt
 
 
 Export STAC_SERVER_URL environment variable with the URL of STAC server in order to run the tests:
