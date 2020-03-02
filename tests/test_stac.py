@@ -12,7 +12,7 @@ import os
 
 from stac import STAC
 
-url =  os.environ.get('STAC_SERVER_URL', 'http://localhost')
+url =  os.environ.get('STAC_SERVER_URL', 'http://cdsr.dpi.inpe.br/inpe-stac/')
 
 def test_creation():
     service = STAC(url)
