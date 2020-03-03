@@ -2291,3 +2291,44 @@ def test_stac_search_post__with_collections():
     result = service.search(params=params, method='POST')
 
     assert expected == result
+
+
+def test_stac_search_post__collection_does_not_have_items():
+    """POST /stac/search"""
+
+    service = STAC(url)
+
+    params = {
+        "collections": ['CBERS4_AWFI_L4_SR'],
+        'bbox': [ -68.0273437, -25.0059726, -34.9365234, 0.3515602 ],
+        'time': '2019-12-01T00:00:00/2020-02-13T23:59:59',
+        'limit': 1
+    }
+
+    expected = {
+        "type": "FeatureCollection",
+        "features": [],
+        "context": {
+            "page": 1,
+            "limit": 1,
+            "matched": 0,
+            "returned": 0,
+            "meta": [
+                {
+                    "name": "CBERS4_AWFI_L4_SR",
+                    "context": {
+                        "page": 1,
+                        "limit": 1,
+                        "matched": 0,
+                        "returned": 0
+                    }
+                }
+            ]
+        }
+    }
+
+    result = service.search(params=params, method='POST')
+
+    assert expected == result
+
+# TODO: create a test to check collection does not exist
