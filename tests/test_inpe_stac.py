@@ -782,7 +782,8 @@ def test_collections_collection_id_items():
             "page": 1,
             "limit": 2,
             "matched": 8,
-            "returned": 2
+            "returned": 2,
+            "meta": None
         },
         "type": "FeatureCollection",
         "features": [
@@ -1184,7 +1185,8 @@ def test_stac_search_get():
             "page": 1,
             "limit": 2,
             'matched': 1933,
-            "returned": 2
+            "returned": 2,
+            "meta": None
         },
         "type": "FeatureCollection",
         "features": [
@@ -1376,7 +1378,8 @@ def test_stac_search_post__without_query_parameter():
             "page": 1,
             "limit": 2,
             'matched': 1933,
-            "returned": 2
+            "returned": 2,
+            "meta": None
         },
         "type": "FeatureCollection",
         "features": [
@@ -1740,7 +1743,8 @@ def test_stac_search_post__with_query_parameter_lte():
             "page": 1,
             "limit": 2,
             "matched": 1932,
-            "returned": 2
+            "returned": 2,
+            "meta": None
         }
     }
 
@@ -1770,7 +1774,8 @@ def test_stac_search_post__with_query_parameter_gte():
             "page": 1,
             "limit": 2,
             'matched': 1,
-            "returned": 1
+            "returned": 1,
+            "meta": None
         },
         "type": "FeatureCollection",
         "features": [
@@ -1886,7 +1891,8 @@ def test_stac_search_post__with_query_parameter_lte_gte():
             "page": 1,
             "limit": 2,
             'matched': 1,
-            "returned": 1
+            "returned": 1,
+            "meta": None
         },
         "type": "FeatureCollection",
         "features": [
@@ -2039,7 +2045,7 @@ def test_stac_search_post__with_collections():
                     "satellite": "CBERS4",
                     "sensor": "AWFI",
                     "cloud_cover": 0,
-                    "sync_loss": 0
+                    "sync_loss": 0.0
                 },
                 "assets": {
                     "blue": {
@@ -2121,7 +2127,7 @@ def test_stac_search_post__with_collections():
                     "satellite": "CBERS4A",
                     "sensor": "WFI",
                     "cloud_cover": 0,
-                    "sync_loss": 0
+                    "sync_loss": 0.0
                 },
                 "assets": {
                     "red": {
@@ -2203,7 +2209,7 @@ def test_stac_search_post__with_collections():
                     "satellite": "CBERS4A",
                     "sensor": "WPM",
                     "cloud_cover": 0,
-                    "sync_loss": 0
+                    "sync_loss": 0.0
                 },
                 "assets": {
                     "green": {
@@ -2249,7 +2255,36 @@ def test_stac_search_post__with_collections():
             "page": 1,
             "limit": 1,
             "matched": 576,
-            "returned": 3
+            "returned": 3,
+            'meta': [
+                {
+                    'name': 'CBERS4_AWFI_L4_DN',
+                    'context': {
+                        'limit': 1,
+                        'matched': 391,
+                        'page': 1,
+                        'returned': 1
+                    }
+                },
+                {
+                    'name': 'CBERS4A_WFI_L4_DN',
+                    'context': {
+                        'limit': 1,
+                        'matched': 9,
+                        'page': 1,
+                        'returned': 1
+                    }
+                },
+                {
+                    'name': 'CBERS4A_WPM_L2_DN',
+                    'context': {
+                        'limit': 1,
+                        'matched': 176,
+                        'page': 1,
+                        'returned': 1
+                    }
+                }
+            ]
         }
     }
 
