@@ -2331,4 +2331,172 @@ def test_stac_search_post__collection_does_not_have_items():
 
     assert expected == result
 
-# TODO: create a test to check collection does not exist
+
+def test_stac_search_post__collection_does_not_exist():
+    """POST /stac/search"""
+
+    service = STAC(url)
+
+    params = {
+        "collections": ['CBERS4_XYZ_L4_DN'],
+        'bbox': [ -68.0273437, -25.0059726, -34.9365234, 0.3515602 ],
+        'time': '2019-12-01T00:00:00/2020-02-13T23:59:59',
+        'limit': 1
+    }
+
+    expected = {
+        "type": "FeatureCollection",
+        "features": [],
+        "context": {
+            "page": 1,
+            "limit": 1,
+            "matched": 0,
+            "returned": 0,
+            'meta': [
+                {
+                    'name': 'CBERS4_XYZ_L4_DN',
+                    'context': {
+                        'limit': 1,
+                        'page': 1,
+                        'matched': 0,
+                        'returned': 0
+                    }
+                }
+            ]
+        }
+    }
+
+    result = service.search(params=params, method='POST')
+
+    assert expected == result
+
+
+def test_stac_search_post__one_collection_exist_and_other_one_does_not_exist():
+    """POST /stac/search"""
+
+    service = STAC(url)
+
+    params = {
+        "collections": ['CBERS4_AWFI_L4_DN', 'CBERS4_XYZ_L4_DN'],
+        'bbox': [ -68.0273437, -25.0059726, -34.9365234, 0.3515602 ],
+        'time': '2019-12-01T00:00:00/2020-02-13T23:59:59',
+        'limit': 1
+    }
+
+    expected = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "id": "CBERS4_AWFI15010520200120",
+                "collection": "CBERS4_AWFI_L4_DN",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                            -42.6153,
+                            -0.285467
+                            ],
+                            [
+                            -42.6546,
+                            -8.42863
+                            ],
+                            [
+                            -33.1365,
+                            -8.40183
+                            ],
+                            [
+                            -33.1992,
+                            -0.284565
+                            ],
+                            [
+                            -42.6153,
+                            -0.285467
+                            ]
+                        ]
+                    ]
+                },
+                "bbox": [
+                    -42.6546,
+                    -8.42863,
+                    -33.1365,
+                    -0.284565
+                ],
+                "properties": {
+                    "datetime": "2020-01-21T12:16:23",
+                    "path": "150",
+                    "row": "105",
+                    "satellite": "CBERS4",
+                    "sensor": "AWFI",
+                    "cloud_cover": 0,
+                    "sync_loss": 0.0
+                },
+                "assets": {
+                    "blue": {
+                        "href": "http://cdsr.dpi.inpe.br/api/download/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105_L4_BAND13.tif"
+                    },
+                    "green": {
+                        "href": "http://cdsr.dpi.inpe.br/api/download/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105_L4_BAND14.tif"
+                    },
+                    "red": {
+                        "href": "http://cdsr.dpi.inpe.br/api/download/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105_L4_BAND15.tif"
+                    },
+                    "nir": {
+                        "href": "http://cdsr.dpi.inpe.br/api/download/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105_L4_BAND16.tif"
+                    },
+                    "thumbnail": {
+                        "href": "http://cdsr.dpi.inpe.br/datastore/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105.png"
+                    }
+                },
+                "links": [
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN/items/CBERS4_AWFI15010520200120",
+                        "rel": "self"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN",
+                        "rel": "parent"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN",
+                        "rel": "collection"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
+                    }
+                ]
+            }
+        ],
+        "context": {
+            "page": 1,
+            "limit": 1,
+            "matched": 391,
+            "returned": 1,
+            'meta': [
+                {
+                    'name': 'CBERS4_AWFI_L4_DN',
+                    'context': {
+                        'limit': 1,
+                        'page': 1,
+                        'matched': 391,
+                        'returned': 1
+                    }
+                },
+                {
+                    'name': 'CBERS4_XYZ_L4_DN',
+                    'context': {
+                        'limit': 1,
+                        'page': 1,
+                        'matched': 0,
+                        'returned': 0
+                    }
+                }
+            ]
+        }
+    }
+
+    result = service.search(params=params, method='POST')
+
+    assert expected == result
