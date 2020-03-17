@@ -586,36 +586,36 @@ def test_collections_collection_id():
         "properties": {},
         "extent": {
             "spatial": [
-                -37.8691,
-                -55.2729,
-                3.03714,
-                -40.9072
+                -66.4038,
+                -79.9447,
+                68.6192,
+                22.637
             ],
             "time": [
-                "2019-12-30",
-                "2020-01-10"
+                "2019-12-27",
+                "2020-02-24"
             ]
         },
         "links": [
             {
-            "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
-            "rel": "self"
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                "rel": "self"
             },
             {
-            "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
-            "rel": "items"
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
+                "rel": "items"
             },
             {
-            "href": "http://localhost:8089/inpe-stac/collections",
-            "rel": "parent"
+                "href": "http://localhost:8089/inpe-stac/collections",
+                "rel": "parent"
             },
             {
-            "href": "http://localhost:8089/inpe-stac/collections",
-            "rel": "root"
+                "href": "http://localhost:8089/inpe-stac/collections",
+                "rel": "root"
             },
             {
-            "href": "http://localhost:8089/inpe-stac/stac",
-            "rel": "root"
+                "href": "http://localhost:8089/inpe-stac/stac",
+                "rel": "root"
             }
         ]
     }
