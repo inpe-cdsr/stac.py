@@ -67,36 +67,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -37.8691,
-                    -55.2729,
-                    3.03714,
-                    -40.9072
+                        -66.4038,
+                        -79.9447,
+                        68.6192,
+                        22.637
                     ],
                     "time": [
-                    "2019-12-30",
-                    "2020-01-10"
+                        "2019-12-27",
+                        "2020-02-24"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -109,14 +109,14 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -31.529,
-                    -53.5023,
-                    -17.6994,
-                    -44.5841
+                        -36.1653,
+                        -71.7135,
+                        -12.1405,
+                        -41.6252
                     ],
                     "time": [
-                    "2019-12-30",
-                    "2020-01-10"
+                        "2019-12-27",
+                        "2020-02-19"
                     ]
                 },
                 "links": [
@@ -151,36 +151,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -40.5504,
-                    -59.7516,
-                    5.85588,
-                    -38.0763
+                        -68.6431,
+                        -85.8382,
+                        71.2034,
+                        179.939
                     ],
                     "time": [
-                    "2019-12-30",
-                    "2020-01-10"
+                        "2019-12-27",
+                        "2020-02-24"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L2_DN",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L2_DN",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L2_DN/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L2_DN/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -193,36 +193,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -35.4051,
-                    -56.2641,
-                    0.759925,
-                    -40.0351
+                        -38.1472,
+                        -80.0226,
+                        8.24979,
+                        -32.8996
                     ],
                     "time": [
-                    "2019-12-30",
-                    "2020-01-10"
+                        "2019-12-27",
+                        "2020-02-19"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L4_DN",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L4_DN",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L4_DN/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L4_DN/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -235,36 +235,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -36.9715,
-                    -53.4136,
-                    3.67659,
-                    -43.2105
+                        -66.4318,
+                        -179.957,
+                        68.5559,
+                        179.905
                     ],
                     "time": [
-                    "2019-12-31",
-                    "2020-01-10"
+                        "2019-12-27",
+                        "2020-03-03"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WPM_L2_DN",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WPM_L2_DN",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WPM_L2_DN/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WPM_L2_DN/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -277,36 +277,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -40.7818,
-                    -83.5022,
-                    21.3449,
-                    55.6045
+                        -45.485,
+                        -82.6242,
+                        21.3355,
+                        55.6045
                     ],
                     "time": [
-                    "2019-11-01",
-                    "2020-01-20"
+                        "2016-06-25",
+                        "2020-02-28"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -319,36 +319,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -40.6714,
-                    -83.5022,
-                    21.3449,
-                    53.6684
+                        -46.6432,
+                        -84.468,
+                        37.194,
+                        57.5331
                     ],
                     "time": [
-                    "2019-11-01",
-                    "2019-12-03"
+                        "2016-05-01",
+                        "2020-02-29"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_SR",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_SR",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_SR/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_SR/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -361,36 +361,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -39.8958,
-                    -58.2673,
-                    18.5552,
-                    45.4624
+                        -70.1442,
+                        -78.5953,
+                        19.4539,
+                        44.9192
                     ],
                     "time": [
-                    "2020-01-06",
-                    "2020-01-18"
+                        "2019-12-03",
+                        "2019-12-31"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L2_DN",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L2_DN",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L2_DN/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L2_DN/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -403,36 +403,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -39.0394,
-                    -79.1374,
-                    19.4644,
-                    48.7398
+                        -39.0394,
+                        -78.3893,
+                        19.4595,
+                        45.551
                     ],
                     "time": [
-                    "2019-11-01",
-                    "2020-01-20"
+                        "2017-11-09",
+                        "2019-12-31"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_DN",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_DN",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_DN/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_DN/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -445,78 +445,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -39.0381,
-                    -79.1374,
-                    19.4576,
-                    48.7398
+                        -39.0349,
+                        -79.3662,
+                        19.4346,
+                        43.8284
                     ],
                     "time": [
-                    "2019-11-01",
-                    "2019-12-03"
+                        "2017-01-26",
+                        "2019-12-03"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_SR",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_SR",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_SR/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_MUX_L4_SR/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
-                    }
-                ]
-            },
-            {
-                "stac_version": "0.7",
-                "id": "CBERS4_PAN10M_L2_DN",
-                "title": "CBERS4_PAN10M_L2_DN",
-                "description": "CBERS4 PAN10M Level2 DN dataset",
-                "license": None,
-                "properties": {},
-                "extent": {
-                    "spatial": [
-                    -11.2928,
-                    -35.2598,
-                    -6.52036,
-                    -32.4047
-                    ],
-                    "time": [
-                    "2019-11-03",
-                    "2019-11-09"
-                    ]
-                },
-                "links": [
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN10M_L2_DN",
-                    "rel": "self"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN10M_L2_DN/items",
-                    "rel": "items"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -529,36 +487,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -38.9157,
-                    -78.3449,
-                    7.80108,
-                    -34.4983
+                        -38.9142,
+                        -78.3449,
+                        7.80108,
+                        -34.4983
                     ],
                     "time": [
-                    "2019-11-01",
-                    "2020-01-20"
+                        "2017-07-11",
+                        "2019-12-31"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN10M_L4_DN",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN10M_L4_DN",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN10M_L4_DN/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN10M_L4_DN/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             },
@@ -571,120 +529,36 @@ def test_collections():
                 "properties": {},
                 "extent": {
                     "spatial": [
-                    -38.0158,
-                    -77.3287,
-                    6.01375,
-                    -34.4899
+                        -6.7861,
+                        -50.4667,
+                        -5.63506,
+                        -49.6963
                     ],
                     "time": [
-                    "2019-11-01",
-                    "2020-01-20"
+                        "2017-07-11",
+                        "2017-07-11"
                     ]
                 },
                 "links": [
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN5M_L4_DN",
-                    "rel": "self"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN5M_L4_DN",
+                        "rel": "self"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN5M_L4_DN/items",
-                    "rel": "items"
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_PAN5M_L4_DN/items",
+                        "rel": "items"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "parent"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/collections",
+                        "rel": "root"
                     },
                     {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
-                    }
-                ]
-            },
-            {
-                "stac_version": "0.7",
-                "id": "LANDSAT5_TM_L2_DN",
-                "title": "LANDSAT5_TM_L2_DN",
-                "description": "LANDSAT5 TM Level2 DN dataset",
-                "license": None,
-                "properties": {},
-                "extent": {
-                    "spatial": [
-                    -39.8723,
-                    -56.6952,
-                    2.36172,
-                    -44.9312
-                    ],
-                    "time": [
-                    "2008-01-10",
-                    "2008-01-12"
-                    ]
-                },
-                "links": [
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections/LANDSAT5_TM_L2_DN",
-                    "rel": "self"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections/LANDSAT5_TM_L2_DN/items",
-                    "rel": "items"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
-                    }
-                ]
-            },
-            {
-                "stac_version": "0.7",
-                "id": "LANDSAT5_TM_L4_DN",
-                "title": "LANDSAT5_TM_L4_DN",
-                "description": "LANDSAT5 TM Level4 DN dataset",
-                "license": None,
-                "properties": {},
-                "extent": {
-                    "spatial": [
-                    -35.4858,
-                    -57.6134,
-                    0.895265,
-                    -46.1207
-                    ],
-                    "time": [
-                    "2008-01-10",
-                    "2008-01-12"
-                    ]
-                },
-                "links": [
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections/LANDSAT5_TM_L4_DN",
-                    "rel": "self"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections/LANDSAT5_TM_L4_DN/items",
-                    "rel": "items"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "parent"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/collections",
-                    "rel": "root"
-                    },
-                    {
-                    "href": "http://localhost:8089/inpe-stac/stac",
-                    "rel": "root"
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
                     }
                 ]
             }
