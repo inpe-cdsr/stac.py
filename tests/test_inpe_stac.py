@@ -2498,7 +2498,7 @@ def test_stac_search_post__collection_does_not_have_items():
 
     assert expected == result
 
-'''
+
 def test_stac_search_post__collection_does_not_exist():
     """POST /stac/search"""
 
@@ -2555,70 +2555,70 @@ def test_stac_search_post__one_collection_exist_and_other_one_does_not_exist():
         "features": [
             {
                 "type": "Feature",
-                "id": "CBERS4_AWFI15010520200120",
+                "id": "CBERS4_AWFI17009920200207",
                 "collection": "CBERS4_AWFI_L4_DN",
                 "geometry": {
                     "type": "Polygon",
                     "coordinates": [
                         [
                             [
-                            -42.6153,
-                            -0.285467
+                                -60.7412,
+                                5.0648
                             ],
                             [
-                            -42.6546,
-                            -8.42863
+                                -60.7319,
+                                -3.05477
                             ],
                             [
-                            -33.1365,
-                            -8.40183
+                                -51.3338,
+                                -3.04626
                             ],
                             [
-                            -33.1992,
-                            -0.284565
+                                -51.3198,
+                                5.05067
                             ],
                             [
-                            -42.6153,
-                            -0.285467
+                                -60.7412,
+                                5.0648
                             ]
                         ]
                     ]
                 },
                 "bbox": [
-                    -42.6546,
-                    -8.42863,
-                    -33.1365,
-                    -0.284565
+                    -60.7412,
+                    -3.05477,
+                    -51.3198,
+                    5.0648
                 ],
                 "properties": {
-                    "datetime": "2020-01-21T12:16:23",
-                    "path": "150",
-                    "row": "105",
+                    "datetime": "2020-02-07T14:00:27",
+                    "path": "170",
+                    "row": "99",
                     "satellite": "CBERS4",
                     "sensor": "AWFI",
-                    "cloud_cover": 0,
-                    "sync_loss": 0.0
+                    "cloud_cover": 10.5,
+                    "sync_loss": 0
                 },
                 "assets": {
                     "blue": {
-                        "href": "http://cdsr.dpi.inpe.br/api/download/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105_L4_BAND13.tif"
+                        "href": "http://localhost:8089/api/download/TIFF/CBERS4/2020_02/CBERS_4_AWFI_DRD_2020_02_07.13_58_30_CB11/170_099_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200207_170_099_L4_BAND13.tif"
                     },
                     "green": {
-                        "href": "http://cdsr.dpi.inpe.br/api/download/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105_L4_BAND14.tif"
-                    },
-                    "red": {
-                        "href": "http://cdsr.dpi.inpe.br/api/download/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105_L4_BAND15.tif"
+                        "href": "http://localhost:8089/api/download/TIFF/CBERS4/2020_02/CBERS_4_AWFI_DRD_2020_02_07.13_58_30_CB11/170_099_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200207_170_099_L4_BAND14.tif"
                     },
                     "nir": {
-                        "href": "http://cdsr.dpi.inpe.br/api/download/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105_L4_BAND16.tif"
+                        "href": "http://localhost:8089/api/download/TIFF/CBERS4/2020_02/CBERS_4_AWFI_DRD_2020_02_07.13_58_30_CB11/170_099_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200207_170_099_L4_BAND16.tif"
+                    },
+                    "red": {
+                        "href": "http://localhost:8089/api/download/TIFF/CBERS4/2020_02/CBERS_4_AWFI_DRD_2020_02_07.13_58_30_CB11/170_099_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200207_170_099_L4_BAND15.tif"
                     },
                     "thumbnail": {
-                        "href": "http://cdsr.dpi.inpe.br/datastore/TIFF/CBERS4/2020_01/CBERS_4_AWFI_DRD_2020_01_20.12_43_30_CB11/150_105_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200120_150_105.png"
+                        "href": "http://cdsr.dpi.inpe.br/datastore/TIFF/CBERS4/2020_02/CBERS_4_AWFI_DRD_2020_02_07.13_58_30_CB11/170_099_0/4_NN_UTM_WGS84/CBERS_4_AWFI_20200207_170_099.png"
                     }
                 },
                 "links": [
                     {
-                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN/items/CBERS4_AWFI15010520200120",
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4_AWFI_L4_DN/items/CBERS4_AWFI17009920200207",
                         "rel": "self"
                     },
                     {
@@ -2639,25 +2639,25 @@ def test_stac_search_post__one_collection_exist_and_other_one_does_not_exist():
         "context": {
             "page": 1,
             "limit": 1,
-            "matched": 391,
+            "matched": 88,
             "returned": 1,
-            'meta': [
+            "meta": [
                 {
-                    'name': 'CBERS4_AWFI_L4_DN',
-                    'context': {
-                        'limit': 1,
-                        'page': 1,
-                        'matched': 391,
-                        'returned': 1
+                    "name": "CBERS4_AWFI_L4_DN",
+                    "context": {
+                        "page": 1,
+                        "limit": 1,
+                        "matched": 88,
+                        "returned": 1
                     }
                 },
                 {
-                    'name': 'CBERS4_XYZ_L4_DN',
-                    'context': {
-                        'limit': 1,
-                        'page': 1,
-                        'matched': 0,
-                        'returned': 0
+                    "name": "CBERS4_XYZ_L4_DN",
+                    "context": {
+                        "page": 1,
+                        "limit": 1,
+                        "matched": 0,
+                        "returned": 0
                     }
                 }
             ]
@@ -2667,4 +2667,3 @@ def test_stac_search_post__one_collection_exist_and_other_one_does_not_exist():
     result = service.search(params=params, method='POST')
 
     assert expected == result
-'''
