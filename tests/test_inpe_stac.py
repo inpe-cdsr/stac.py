@@ -1026,11 +1026,6 @@ def test_stac():
                 "title": "CBERS4_MUX_L4_SR"
             },
             {
-                "href": "{}/collections/CBERS4_PAN10M_L2_DN".format(service.url),
-                "rel": "child",
-                "title": "CBERS4_PAN10M_L2_DN"
-            },
-            {
                 "href": "{}/collections/CBERS4_PAN10M_L4_DN".format(service.url),
                 "rel": "child",
                 "title": "CBERS4_PAN10M_L4_DN"
@@ -1039,16 +1034,6 @@ def test_stac():
                 "href": "{}/collections/CBERS4_PAN5M_L4_DN".format(service.url),
                 "rel": "child",
                 "title": "CBERS4_PAN5M_L4_DN"
-            },
-            {
-                "href": "{}/collections/LANDSAT5_TM_L2_DN".format(service.url),
-                "rel": "child",
-                "title": "LANDSAT5_TM_L2_DN"
-            },
-            {
-                "href": "{}/collections/LANDSAT5_TM_L4_DN".format(service.url),
-                "rel": "child",
-                "title": "LANDSAT5_TM_L4_DN"
             }
         ]
     }
