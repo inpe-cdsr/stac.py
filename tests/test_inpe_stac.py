@@ -57,6 +57,9 @@ def test_collections():
         "collections": [
             {
                 "stac_version": "0.7.0",
+                "stac_extensions": [
+                    "eo"
+                ],
                 "id": "CBERS4A_MUX_L2_DN",
                 "title": "CBERS4A_MUX_L2_DN",
                 "description": "CBERS4A MUX Level2 DN dataset",
@@ -73,7 +76,26 @@ def test_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {},
+                "properties": {
+                    "eo:bands": [
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
                 "links": [
                     {
                         "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
@@ -99,6 +121,9 @@ def test_collections():
             },
             {
                 "stac_version": "0.7.0",
+                "stac_extensions": [
+                    "eo"
+                ],
                 "id": "CBERS4A_MUX_L4_DN",
                 "title": "CBERS4A_MUX_L4_DN",
                 "description": "CBERS4A MUX Level4 DN dataset",
@@ -115,7 +140,26 @@ def test_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {},
+                "properties": {
+                    "eo:bands": [
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
                 "links": [
                     {
                         "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L4_DN",
@@ -141,6 +185,9 @@ def test_collections():
             },
             {
                 "stac_version": "0.7.0",
+                "stac_extensions": [
+                    "eo"
+                ],
                 "id": "CBERS4A_WFI_L2_DN",
                 "title": "CBERS4A_WFI_L2_DN",
                 "description": "CBERS4A WFI Level2 DN dataset",
@@ -157,7 +204,26 @@ def test_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {},
+                "properties": {
+                    "eo:bands": [
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
                 "links": [
                     {
                         "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L2_DN",
@@ -183,6 +249,9 @@ def test_collections():
             },
             {
                 "stac_version": "0.7.0",
+                "stac_extensions": [
+                    "eo"
+                ],
                 "id": "CBERS4A_WFI_L4_DN",
                 "title": "CBERS4A_WFI_L4_DN",
                 "description": "CBERS4A WFI Level4 DN dataset",
@@ -199,7 +268,26 @@ def test_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {},
+                "properties": {
+                    "eo:bands": [
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
                 "links": [
                     {
                         "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L4_DN",
@@ -225,6 +313,9 @@ def test_collections():
             },
             {
                 "stac_version": "0.7.0",
+                "stac_extensions": [
+                    "eo"
+                ],
                 "id": "CBERS4A_WPM_L2_DN",
                 "title": "CBERS4A_WPM_L2_DN",
                 "description": "CBERS4A WPM Level2 DN dataset",
@@ -241,7 +332,30 @@ def test_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {},
+                "properties": {
+                    "eo:bands": [
+                        {
+                            "name": "pan",
+                            "common_name": "pan"
+                        },
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
                 "links": [
                     {
                         "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WPM_L2_DN",
@@ -267,6 +381,9 @@ def test_collections():
             },
             {
                 "stac_version": "0.7.0",
+                "stac_extensions": [
+                    "eo"
+                ],
                 "id": "CBERS4A_WPM_L4_DN",
                 "title": "CBERS4A_WPM_L4_DN",
                 "description": "CBERS4A WPM Level4 DN dataset",
@@ -283,7 +400,30 @@ def test_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {},
+                "properties": {
+                    "eo:bands": [
+                        {
+                            "name": "pan",
+                            "common_name": "pan"
+                        },
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
                 "links": [
                     {
                         "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WPM_L4_DN",
@@ -324,6 +464,9 @@ def test_collections_collection_id():
 
     expected = {
         "stac_version": "0.7.0",
+        "stac_extensions": [
+            "eo"
+        ],
         "id": "CBERS4A_MUX_L2_DN",
         "title": "CBERS4A_MUX_L2_DN",
         "description": "CBERS4A MUX Level2 DN dataset",
@@ -340,7 +483,26 @@ def test_collections_collection_id():
                 "2020-10-09"
             ]
         },
-        "properties": {},
+        "properties": {
+            "eo:bands": [
+                {
+                    "name": "blue",
+                    "common_name": "blue"
+                },
+                {
+                    "name": "green",
+                    "common_name": "green"
+                },
+                {
+                    "name": "red",
+                    "common_name": "red"
+                },
+                {
+                    "name": "nir",
+                    "common_name": "nir"
+                }
+            ]
+        },
         "links": [
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
