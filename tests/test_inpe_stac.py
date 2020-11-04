@@ -573,7 +573,7 @@ def test_collections_collection_id_items():
             {
                 "stac_version": "0.9.0",
                 "stac_extensions": [
-                    "eo", "query"
+                    "eo"
                 ],
                 "type": "Feature",
                 "id": "CBERS4A_MUX18913420200102",
@@ -711,7 +711,7 @@ def test_collections_collection_id_items():
             {
                 "stac_version": "0.9.0",
                 "stac_extensions": [
-                    "eo", "query"
+                    "eo"
                 ],
                 "type": "Feature",
                 "id": "CBERS4A_MUX18913320200102",
@@ -883,7 +883,7 @@ def test_collections_collection_id_items_item_id():
     expected = {
         "stac_version": "0.9.0",
         "stac_extensions": [
-            "eo", "query"
+            "eo"
         ],
         "type": "Feature",
         "id": "CBERS4A_MUX23215220201009",
