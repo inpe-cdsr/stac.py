@@ -1039,12 +1039,7 @@ def test_collections_collection_id_items_item_id__not_found_item():
         "limit": 2
     }
 
-    expected = {
-        'stac_version': '0.9.0',
-        'stac_extensions': [],
-        "type": "FeatureCollection",
-        "features": []
-    }
+    expected = {}
 
     result = service.collections_items(
         collection_id=collection_id, item_id=item_id, params=params
