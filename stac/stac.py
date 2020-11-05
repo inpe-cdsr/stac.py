@@ -144,10 +144,10 @@ class STAC:
         else:
             if 'bbox' in params:
                 params['bbox'] = ','.join(map(str, params['bbox']))
+            if 'ids' in params:
+                params['ids'] = ','.join(params['ids'])
             # if 'intersects' in params:
             #     params['intersects'] = params['intersects']
-            # if 'ids' in params:
-            #     params['ids'] = ','.join(params['ids'])
             # if 'collections' in params:
             #     params['collections'] = ','.join(params['collections'])
 

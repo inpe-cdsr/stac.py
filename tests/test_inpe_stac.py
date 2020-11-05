@@ -849,8 +849,340 @@ def test_collections_collection_id_items():
         ],
         "links": [
             {
-                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items?bbox=-68.0273437,-25.0059726,-34.9365234,0.3515602&time=2019-12-22T00:00:00/2020-01-22T23:59:00&page=1&limit=2",
                 "rel": "self"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
+                "rel": "parent"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                "rel": "parent"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/collections",
+                "rel": "collection"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/stac",
+                "rel": "root"
+            }
+        ]
+    }
+
+    result = service.collections_items(collection_id=collection_id, params=params)
+
+    assert expected == result
+
+
+def test_collections_collection_id_items__with_params_ids():
+    """/collections/<collection_id>/items"""
+
+    service = STAC(url)
+
+    collection_id = "CBERS4A_MUX_L2_DN"
+    params = {
+        "ids": [ 'CBERS4A_MUX07012820200813', 'CBERS4A_MUX07012320200813' ]
+    }
+
+    expected = {
+        "stac_version": "0.9.0",
+        "stac_extensions": ["context"],
+        "context": {
+            "page": 1,
+            "limit": 10,
+            "matched": 2,
+            "returned": 2,
+            "meta": None
+        },
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "stac_version": "0.9.0",
+                "stac_extensions": [
+                    "eo"
+                ],
+                "type": "Feature",
+                "id": "CBERS4A_MUX07012820200813",
+                "collection": "CBERS4A_MUX_L2_DN",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                59.2484,
+                                -11.4149
+                            ],
+                            [
+                                59.2484,
+                                -12.5142
+                            ],
+                            [
+                                60.3313,
+                                -12.5142
+                            ],
+                            [
+                                60.3313,
+                                -11.4149
+                            ],
+                            [
+                                59.2484,
+                                -11.4149
+                            ]
+                        ]
+                    ]
+                },
+                "bbox": [
+                    59.2484,
+                    -12.5142,
+                    60.3313,
+                    -11.4149
+                ],
+                "properties": {
+                    "datetime": "2020-08-13T06:33:19",
+                    "path": 70,
+                    "row": 128,
+                    "satellite": "CBERS4A",
+                    "sensor": "MUX",
+                    "cloud_cover": 20,
+                    "sync_loss": None,
+                    "eo:gsd": -1,
+                    "eo:bands": [
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
+                "assets": {
+                    "blue": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_128_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_128_L2_BAND5.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            0
+                        ]
+                    },
+                    "blue_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_128_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_128_L2_BAND5.xml",
+                        "type": "application/xml"
+                    },
+                    "green": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_128_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_128_L2_BAND6.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            1
+                        ]
+                    },
+                    "green_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_128_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_128_L2_BAND6.xml",
+                        "type": "application/xml"
+                    },
+                    "red": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_128_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_128_L2_BAND7.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            2
+                        ]
+                    },
+                    "red_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_128_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_128_L2_BAND7.xml",
+                        "type": "application/xml"
+                    },
+                    "nir": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_128_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_128_L2_BAND8.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            3
+                        ]
+                    },
+                    "nir_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_128_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_128_L2_BAND8.xml",
+                        "type": "application/xml"
+                    },
+                    "thumbnail": {
+                        "href": "http://www2.dgi.inpe.br/datastore/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_128_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_128.png",
+                        "type": "image/png"
+                    }
+                },
+                "links": [
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items/CBERS4A_MUX07012820200813",
+                        "rel": "self"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "parent"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "collection"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
+                    }
+                ]
+            },
+            {
+                "stac_version": "0.9.0",
+                "stac_extensions": [
+                    "eo"
+                ],
+                "type": "Feature",
+                "id": "CBERS4A_MUX07012320200813",
+                "collection": "CBERS4A_MUX_L2_DN",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                60.1,
+                                -7.4544
+                            ],
+                            [
+                                60.1,
+                                -8.53799
+                            ],
+                            [
+                                61.1516,
+                                -8.53799
+                            ],
+                            [
+                                61.1516,
+                                -7.4544
+                            ],
+                            [
+                                60.1,
+                                -7.4544
+                            ]
+                        ]
+                    ]
+                },
+                "bbox": [
+                    60.1,
+                    -8.53799,
+                    61.1516,
+                    -7.4544
+                ],
+                "properties": {
+                    "datetime": "2020-08-13T06:32:15",
+                    "path": 70,
+                    "row": 123,
+                    "satellite": "CBERS4A",
+                    "sensor": "MUX",
+                    "cloud_cover": 40,
+                    "sync_loss": None,
+                    "eo:gsd": -1,
+                    "eo:bands": [
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
+                "assets": {
+                    "blue": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_123_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_123_L2_BAND5.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            0
+                        ]
+                    },
+                    "blue_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_123_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_123_L2_BAND5.xml",
+                        "type": "application/xml"
+                    },
+                    "green": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_123_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_123_L2_BAND6.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            1
+                        ]
+                    },
+                    "green_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_123_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_123_L2_BAND6.xml",
+                        "type": "application/xml"
+                    },
+                    "red": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_123_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_123_L2_BAND7.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            2
+                        ]
+                    },
+                    "red_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_123_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_123_L2_BAND7.xml",
+                        "type": "application/xml"
+                    },
+                    "nir": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_123_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_123_L2_BAND8.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            3
+                        ]
+                    },
+                    "nir_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_123_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_123_L2_BAND8.xml",
+                        "type": "application/xml"
+                    },
+                    "thumbnail": {
+                        "href": "http://www2.dgi.inpe.br/datastore/TIFF/CBERS4A/2020_08/CBERS_4A_MUX_RAW_2020_08_13.02_38_30_ETC2/070_123_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200812_070_123.png",
+                        "type": "image/png"
+                    }
+                },
+                "links": [
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items/CBERS4A_MUX07012320200813",
+                        "rel": "self"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "parent"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "collection"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
+                    }
+                ]
+            }
+        ],
+        "links": [
+            {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items?ids=CBERS4A_MUX07012820200813,CBERS4A_MUX07012320200813&page=1&limit=10",
+                "rel": "self"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
+                "rel": "parent"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
@@ -3016,6 +3348,336 @@ def test_stac_search_post__with_collections():
 
     assert expected == result
 
+'''
+def test_stac_search_post__with_one_collection():
+    """
+    POST /stac/search
+
+    This test case should return the same result as `test_collections_collection_id_items` test case
+    """
+
+    service = STAC(url)
+
+    params = {
+        "collections": ["CBERS4A_MUX_L2_DN"],
+        "bbox": [ -68.0273437, -25.0059726, -34.9365234, 0.3515602 ],
+        "time": "2019-12-22T00:00:00/2020-01-22T23:59:00",
+        "limit": 2
+    }
+
+    expected = {
+        "stac_version": "0.9.0",
+        "stac_extensions": ["context"],
+        "context": {
+            "page": 1,
+            "limit": 2,
+            "matched": 759,
+            "returned": 2,
+            "meta": None
+        },
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "stac_version": "0.9.0",
+                "stac_extensions": [
+                    "eo", "query"
+                ],
+                "type": "Feature",
+                "id": "CBERS4A_MUX18913420200102",
+                "collection": "CBERS4A_MUX_L2_DN",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                -35.1462,
+                                -16.1795
+                            ],
+                            [
+                                -35.1462,
+                                -17.2654
+                            ],
+                            [
+                                -34.0528,
+                                -17.2654
+                            ],
+                            [
+                                -34.0528,
+                                -16.1795
+                            ],
+                            [
+                                -35.1462,
+                                -16.1795
+                            ]
+                        ]
+                    ]
+                },
+                "bbox": [
+                    -35.1462,
+                    -17.2654,
+                    -34.0528,
+                    -16.1795
+                ],
+                "properties": {
+                    "datetime": "2020-01-02T12:40:32",
+                    "path": 189,
+                    "row": 134,
+                    "satellite": "CBERS4A",
+                    "sensor": "MUX",
+                    "cloud_cover": 60,
+                    "sync_loss": None,
+                    "eo:gsd": -1,
+                    "eo:bands": [
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
+                "assets": {
+                    "blue": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_134_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_134_L2_BAND5.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            0
+                        ]
+                    },
+                    "blue_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_134_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_134_L2_BAND5.xml",
+                        "type": "application/xml"
+                    },
+                    "green": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_134_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_134_L2_BAND6.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            1
+                        ]
+                    },
+                    "green_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_134_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_134_L2_BAND6.xml",
+                        "type": "application/xml"
+                    },
+                    "red": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_134_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_134_L2_BAND7.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            2
+                        ]
+                    },
+                    "red_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_134_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_134_L2_BAND7.xml",
+                        "type": "application/xml"
+                    },
+                    "nir": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_134_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_134_L2_BAND8.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            3
+                        ]
+                    },
+                    "nir_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_134_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_134_L2_BAND8.xml",
+                        "type": "application/xml"
+                    },
+                    "thumbnail": {
+                        "href": "http://www2.dgi.inpe.br/datastore/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_134_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_134.png",
+                        "type": "image/png"
+                    }
+                },
+                "links": [
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items/CBERS4A_MUX18913420200102",
+                        "rel": "self"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "parent"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "collection"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
+                    }
+                ]
+            },
+            {
+                "stac_version": "0.9.0",
+                "stac_extensions": [
+                    "eo", "query"
+                ],
+                "type": "Feature",
+                "id": "CBERS4A_MUX18913320200102",
+                "collection": "CBERS4A_MUX_L2_DN",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                -34.9693,
+                                -15.3869
+                            ],
+                            [
+                                -34.9693,
+                                -16.4724
+                            ],
+                            [
+                                -33.8815,
+                                -16.4724
+                            ],
+                            [
+                                -33.8815,
+                                -15.3869
+                            ],
+                            [
+                                -34.9693,
+                                -15.3869
+                            ]
+                        ]
+                    ]
+                },
+                "bbox": [
+                    -34.9693,
+                    -16.4724,
+                    -33.8815,
+                    -15.3869
+                ],
+                "properties": {
+                    "datetime": "2020-01-02T12:40:19",
+                    "path": 189,
+                    "row": 133,
+                    "satellite": "CBERS4A",
+                    "sensor": "MUX",
+                    "cloud_cover": 70,
+                    "sync_loss": None,
+                    "eo:gsd": -1,
+                    "eo:bands": [
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
+                "assets": {
+                    "blue": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_133_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_133_L2_BAND5.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            0
+                        ]
+                    },
+                    "blue_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_133_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_133_L2_BAND5.xml",
+                        "type": "application/xml"
+                    },
+                    "green": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_133_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_133_L2_BAND6.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            1
+                        ]
+                    },
+                    "green_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_133_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_133_L2_BAND6.xml",
+                        "type": "application/xml"
+                    },
+                    "red": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_133_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_133_L2_BAND7.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            2
+                        ]
+                    },
+                    "red_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_133_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_133_L2_BAND7.xml",
+                        "type": "application/xml"
+                    },
+                    "nir": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_133_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_133_L2_BAND8.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            3
+                        ]
+                    },
+                    "nir_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_133_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_133_L2_BAND8.xml",
+                        "type": "application/xml"
+                    },
+                    "thumbnail": {
+                        "href": "http://www2.dgi.inpe.br/datastore/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_02.12_37_41_ETC2/189_133_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200102_189_133.png",
+                        "type": "image/png"
+                    }
+                },
+                "links": [
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items/CBERS4A_MUX18913320200102",
+                        "rel": "self"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "parent"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "collection"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
+                    }
+                ]
+            }
+        ],
+        "links": [
+            {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
+                "rel": "self"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                "rel": "parent"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/collections",
+                "rel": "collection"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/stac",
+                "rel": "root"
+            }
+        ]
+    }
+
+    result = service.search(params=params, method="POST")
+
+    assert expected == result
+'''
 
 def test_stac_search_post__collection_does_not_have_items():
     """POST /stac/search"""
