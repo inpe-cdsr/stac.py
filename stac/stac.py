@@ -7,6 +7,7 @@
 #
 """Python API client wrapper for STAC."""
 
+from copy import deepcopy
 from werkzeug.exceptions import BadRequest
 
 from stac.catalog import Catalog
@@ -178,6 +179,8 @@ class STAC:
         :returns: A GeoJSON FeatureCollection.
         :rtype: dict
         """
+        params = deepcopy(params)
+
         if method == 'GET':
             if params is not None:
                 if 'bbox' in params:
