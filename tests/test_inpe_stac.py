@@ -15,6 +15,61 @@ from stac import STAC
 url = getenv("STAC_SERVER_URL", "http://localhost:8089/inpe-stac")
 
 
+##################################################
+# UTIL FUNCTIONS
+##################################################
+
+def stac_search__get_expected_links_to_GET_method(params):
+    # expected_params - copy the 'params' variable and fix 'bbox' property
+    e_params = {
+        **params,
+        'bbox': ','.join(list(map(
+        # convert the floats to str before joining the elements
+        lambda x: str(x), params['bbox']
+        )))
+    }
+
+    links_GET_method = [
+        {
+            "href": f"http://localhost:8089/inpe-stac/stac/search?bbox={e_params['bbox']}&time={e_params['time']}&page={e_params['page']}&limit={e_params['limit']}",
+            "rel": "self"
+        },
+        {
+            "href": f"http://localhost:8089/inpe-stac/stac/search?bbox={e_params['bbox']}&time={e_params['time']}&page={e_params['page']+1}&limit={e_params['limit']}",
+            "rel": "next"
+        },
+        {
+            "href": "http://localhost:8089/inpe-stac/stac",
+            "rel": "root"
+        }
+    ]
+
+    links_POST_method = [
+        {
+            "href":  "http://localhost:8089/inpe-stac/stac/search",
+            "rel": "self",
+            "method": "POST",
+            "body": params
+        },
+        {
+            "href":  "http://localhost:8089/inpe-stac/stac/search",
+            "rel": "next",
+            "method": "POST",
+            "body": {**params, 'page': params['page'] + 1}
+        },
+        {
+            "href": "http://localhost:8089/inpe-stac/stac",
+            "rel": "root"
+        }
+    ]
+
+    return links_GET_method, links_POST_method
+
+
+##################################################
+# TEST CASES
+##################################################
+
 '''
 def test_get_capabilities():
     # TODO
@@ -854,15 +909,15 @@ def test_get_collections_collection_id_items():
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
-                "rel": "parent"
+                "rel": "child"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
-                "rel": "parent"
+                "rel": "collection"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections",
-                "rel": "collection"
+                "rel": "parent"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/stac",
@@ -1182,15 +1237,15 @@ def test_get_collections_collection_id_items__with_params_ids():
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items",
-                "rel": "parent"
+                "rel": "child"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
-                "rel": "parent"
+                "rel": "collection"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections",
-                "rel": "collection"
+                "rel": "parent"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/stac",
@@ -2307,7 +2362,53 @@ def test_get_post_stac_search():
         ]
     }
 
+    # by default, the expected parameters return the initial page
+    params['page'] = 1
+
+    # expected_params - copy the 'params' variable and fix 'bbox' property
+    e_params = {
+        **params,
+        'bbox': ','.join(list(map(
+            # convert the floats to str before joining the elements
+            lambda x: str(x), params['bbox']
+        )))
+    }
+
+    expected['links'] = [
+        {
+            "href": f"http://localhost:8089/inpe-stac/stac/search?bbox={e_params['bbox']}&time={e_params['time']}&page={e_params['page']}&limit={e_params['limit']}",
+            "rel": "self"
+        },
+        {
+            "href": f"http://localhost:8089/inpe-stac/stac/search?bbox={e_params['bbox']}&time={e_params['time']}&page={e_params['page']+1}&limit={e_params['limit']}",
+            "rel": "next"
+        },
+        {
+            "href": "http://localhost:8089/inpe-stac/stac",
+            "rel": "root"
+        }
+    ]
+
     assert expected == service.search(params=params)
+
+    expected['links'] = [
+        {
+            "href":  "http://localhost:8089/inpe-stac/stac/search",
+            "rel": "self",
+            "method": "POST",
+            "body": params
+        },
+        {
+            "href":  "http://localhost:8089/inpe-stac/stac/search",
+            "rel": "next",
+            "method": "POST",
+            "body": {**params, 'page': params['page'] + 1}
+        },
+        {
+            "href": "http://localhost:8089/inpe-stac/stac",
+            "rel": "root"
+        }
+    ]
 
     assert expected == service.search(params=params, method="POST")
 
@@ -2617,7 +2718,13 @@ def test_get_post_stac_search__pagination__page_1__limit_2():
         ]
     }
 
+    links_GET_method, links_POST_method = stac_search__get_expected_links_to_GET_method(params)
+
+    expected['links'] = links_GET_method
+
     assert expected == service.search(params=params)
+
+    expected['links'] = links_POST_method
 
     assert expected == service.search(params=params, method="POST")
 
@@ -2927,7 +3034,13 @@ def test_get_post_stac_search__pagination__page_2__limit_2():
         ]
     }
 
+    links_GET_method, links_POST_method = stac_search__get_expected_links_to_GET_method(params)
+
+    expected['links'] = links_GET_method
+
     assert expected == service.search(params=params)
+
+    expected['links'] = links_POST_method
 
     assert expected == service.search(params=params, method="POST")
 
@@ -3237,7 +3350,13 @@ def test_get_post_stac_search__pagination__page_3__limit_2():
         ]
     }
 
+    links_GET_method, links_POST_method = stac_search__get_expected_links_to_GET_method(params)
+
+    expected['links'] = links_GET_method
+
     assert expected == service.search(params=params)
+
+    expected['links'] = links_POST_method
 
     assert expected == service.search(params=params, method="POST")
 
@@ -3541,7 +3660,11 @@ def test_post_stac_search__without_query_parameter():
                     }
                 ]
             }
-        ]
+        ],
+        # add 'page' property and return just the links property to POST method
+        "links": stac_search__get_expected_links_to_GET_method(
+            {**params, 'page': 1}
+        )[1]
     }
 
     result = service.search(params=params, method="POST")
@@ -3853,7 +3976,11 @@ def test_post_stac_search__with_query_parameter_lte():
                     }
                 ]
             }
-        ]
+        ],
+        # add 'page' property and return just the links property to POST method
+        "links": stac_search__get_expected_links_to_GET_method(
+            {**params, 'page': 1}
+        )[1]
     }
 
     result = service.search(params=params, method="POST")
@@ -4165,7 +4292,11 @@ def test_post_stac_search__with_query_parameter_gte():
                     }
                 ]
             }
-        ]
+        ],
+        # add 'page' property and return just the links property to POST method
+        "links": stac_search__get_expected_links_to_GET_method(
+            {**params, 'page': 1}
+        )[1]
     }
 
     result = service.search(params=params, method="POST")
@@ -4478,7 +4609,11 @@ def test_post_stac_search__with_query_parameter_lte_gte():
                     }
                 ]
             }
-        ]
+        ],
+        # add 'page' property and return just the links property to POST method
+        "links": stac_search__get_expected_links_to_GET_method(
+            {**params, 'page': 1}
+        )[1]
     }
 
     result = service.search(params=params, method="POST")
@@ -4800,7 +4935,11 @@ def test_post_stac_search__with_one_collection():
                     }
                 ]
             }
-        ]
+        ],
+        # add 'page' property and return just the links property to POST method
+        "links": stac_search__get_expected_links_to_GET_method(
+            {**params, 'page': 1}
+        )[1]
     }
 
     result = service.search(params=params, method="POST")
@@ -5151,7 +5290,11 @@ def test_post_stac_search__with_collections():
                     }
                 ]
             }
-        ]
+        ],
+        # add 'page' property and return just the links property to POST method
+        "links": stac_search__get_expected_links_to_GET_method(
+            {**params, 'page': 1}
+        )[1]
     }
 
     result = service.search(params=params, method="POST")
@@ -5192,7 +5335,11 @@ def test_post_stac_search__collection_does_not_have_items():
             ]
         },
         "type": "FeatureCollection",
-        "features": []
+        "features": [],
+        # add 'page' property and return just the links property to POST method
+        "links": stac_search__get_expected_links_to_GET_method(
+            {**params, 'page': 1}
+        )[1]
     }
 
     result = service.search(params=params, method="POST")
@@ -5233,7 +5380,11 @@ def test_post_stac_search__collection_does_not_exist():
             ]
         },
         "type": "FeatureCollection",
-        "features": []
+        "features": [],
+        # add 'page' property and return just the links property to POST method
+        "links": stac_search__get_expected_links_to_GET_method(
+            {**params, 'page': 1}
+        )[1]
     }
 
     result = service.search(params=params, method="POST")
@@ -5422,9 +5573,184 @@ def test_post_stac_search__one_collection_exist_and_other_one_does_not_exist():
                     }
                 ]
             }
-        ]
+        ],
+        # add 'page' property and return just the links property to POST method
+        "links": stac_search__get_expected_links_to_GET_method(
+            {**params, 'page': 1}
+        )[1]
     }
 
     result = service.search(params=params, method="POST")
 
     assert expected == result
+
+'''
+def test_get_post_stac_search__error__invalid_params():
+    """[GET|POST] /stac/search"""
+
+    service = STAC(url)
+
+    params = {
+        "bbox": [ -68.0273437, "-25.0059726", -34.9365234, "bee" ],
+        "time": "2019-12-22T00:00:00/2020-01-22T23:59:00",
+        "limit": 1
+    }
+
+    expected = {
+        "stac_version": "0.9.0",
+        "stac_extensions": ["context"],
+        "context": {
+            "page": 1,
+            "limit": 6,
+            "matched": 1859,
+            "returned": 6,
+            "meta": None
+        },
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "stac_version": "0.9.0",
+                "stac_extensions": [
+                    "eo",
+                    "query"
+                ],
+                "type": "Feature",
+                "id": "CBERS4A_MUX21614520200122",
+                "collection": "CBERS4A_MUX_L2_DN",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                -58.3382,
+                                -24.8867
+                            ],
+                            [
+                                -58.3382,
+                                -25.9742
+                            ],
+                            [
+                                -57.1717,
+                                -25.9742
+                            ],
+                            [
+                                -57.1717,
+                                -24.8867
+                            ],
+                            [
+                                -58.3382,
+                                -24.8867
+                            ]
+                        ]
+                    ]
+                },
+                "bbox": [
+                    -58.3382,
+                    -25.9742,
+                    -57.1717,
+                    -24.8867
+                ],
+                "properties": {
+                    "datetime": "2020-01-22T14:08:20",
+                    "path": 216,
+                    "row": 145,
+                    "satellite": "CBERS4A",
+                    "sensor": "MUX",
+                    "cloud_cover": 90,
+                    "sync_loss": None,
+                    "eo:gsd": -1,
+                    "eo:bands": [
+                        {
+                            "name": "blue",
+                            "common_name": "blue"
+                        },
+                        {
+                            "name": "green",
+                            "common_name": "green"
+                        },
+                        {
+                            "name": "red",
+                            "common_name": "red"
+                        },
+                        {
+                            "name": "nir",
+                            "common_name": "nir"
+                        }
+                    ]
+                },
+                "assets": {
+                    "blue": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_22.14_00_00_ETC2/216_145_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200122_216_145_L2_BAND5.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            0
+                        ]
+                    },
+                    "blue_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_22.14_00_00_ETC2/216_145_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200122_216_145_L2_BAND5.xml",
+                        "type": "application/xml"
+                    },
+                    "green": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_22.14_00_00_ETC2/216_145_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200122_216_145_L2_BAND6.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            1
+                        ]
+                    },
+                    "green_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_22.14_00_00_ETC2/216_145_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200122_216_145_L2_BAND6.xml",
+                        "type": "application/xml"
+                    },
+                    "red": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_22.14_00_00_ETC2/216_145_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200122_216_145_L2_BAND7.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            2
+                        ]
+                    },
+                    "red_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_22.14_00_00_ETC2/216_145_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200122_216_145_L2_BAND7.xml",
+                        "type": "application/xml"
+                    },
+                    "nir": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_22.14_00_00_ETC2/216_145_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200122_216_145_L2_BAND8.tif",
+                        "type": "image/tiff; application=geotiff",
+                        "eo:bands": [
+                            3
+                        ]
+                    },
+                    "nir_xml": {
+                        "href": "http://www2.dgi.inpe.br/api/download/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_22.14_00_00_ETC2/216_145_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200122_216_145_L2_BAND8.xml",
+                        "type": "application/xml"
+                    },
+                    "thumbnail": {
+                        "href": "http://www2.dgi.inpe.br/datastore/TIFF/CBERS4A/2020_01/CBERS_4A_MUX_RAW_2020_01_22.14_00_00_ETC2/216_145_0/2_BC_UTM_WGS84/CBERS_4A_MUX_20200122_216_145.png",
+                        "type": "image/png"
+                    }
+                },
+                "links": [
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN/items/CBERS4A_MUX21614520200122",
+                        "rel": "self"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "parent"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
+                        "rel": "collection"
+                    },
+                    {
+                        "href": "http://localhost:8089/inpe-stac/stac",
+                        "rel": "root"
+                    }
+                ]
+            }
+        ]
+    }
+
+    assert expected == service.search(params=params)
+
+    assert expected == service.search(params=params, method="POST")
+'''
