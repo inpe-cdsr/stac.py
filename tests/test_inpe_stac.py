@@ -85,23 +85,24 @@ def test_get_capabilities():
     # print("\n result: ", result)
 
     assert expected == result
-
+'''
 
 def test_get_conformance():
-    # TODO
-    """/conformance"""
-
     service = STAC(url)
 
-    expected = {}
+    expected = {
+        "conformsTo": [
+            "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core",
+            "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/oas30",
+            "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/html",
+            "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson"
+        ]
+    }
 
-    result = service.catalog()
-
-    # print("\n expected: ", expected)
-    # print("\n result: ", result)
+    result = service.conformance()
 
     assert expected == result
-'''
+
 
 def test_get_collections():
     """/collections"""
