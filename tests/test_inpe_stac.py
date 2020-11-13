@@ -113,9 +113,7 @@ def test_get_collections():
         "collections": [
             {
                 "stac_version": "0.9.0",
-                "stac_extensions": [
-                    "eo"
-                ],
+                "stac_extensions": [],
                 "id": "CBERS4A_MUX_L2_DN",
                 "title": "CBERS4A_MUX_L2_DN",
                 "description": "CBERS4A MUX Level2 DN dataset",
@@ -132,7 +130,7 @@ def test_get_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {
+                "summaries": {
                     "eo:bands": [
                         {
                             "name": "blue",
@@ -177,9 +175,7 @@ def test_get_collections():
             },
             {
                 "stac_version": "0.9.0",
-                "stac_extensions": [
-                    "eo"
-                ],
+                "stac_extensions": [],
                 "id": "CBERS4A_MUX_L4_DN",
                 "title": "CBERS4A_MUX_L4_DN",
                 "description": "CBERS4A MUX Level4 DN dataset",
@@ -196,7 +192,7 @@ def test_get_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {
+                "summaries": {
                     "eo:bands": [
                         {
                             "name": "blue",
@@ -241,9 +237,7 @@ def test_get_collections():
             },
             {
                 "stac_version": "0.9.0",
-                "stac_extensions": [
-                    "eo"
-                ],
+                "stac_extensions": [],
                 "id": "CBERS4A_WFI_L2_DN",
                 "title": "CBERS4A_WFI_L2_DN",
                 "description": "CBERS4A WFI Level2 DN dataset",
@@ -260,7 +254,7 @@ def test_get_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {
+                "summaries": {
                     "eo:bands": [
                         {
                             "name": "blue",
@@ -305,9 +299,7 @@ def test_get_collections():
             },
             {
                 "stac_version": "0.9.0",
-                "stac_extensions": [
-                    "eo"
-                ],
+                "stac_extensions": [],
                 "id": "CBERS4A_WFI_L4_DN",
                 "title": "CBERS4A_WFI_L4_DN",
                 "description": "CBERS4A WFI Level4 DN dataset",
@@ -324,7 +316,7 @@ def test_get_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {
+                "summaries": {
                     "eo:bands": [
                         {
                             "name": "blue",
@@ -369,9 +361,7 @@ def test_get_collections():
             },
             {
                 "stac_version": "0.9.0",
-                "stac_extensions": [
-                    "eo"
-                ],
+                "stac_extensions": [],
                 "id": "CBERS4A_WPM_L2_DN",
                 "title": "CBERS4A_WPM_L2_DN",
                 "description": "CBERS4A WPM Level2 DN dataset",
@@ -388,7 +378,7 @@ def test_get_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {
+                "summaries": {
                     "eo:bands": [
                         {
                             "name": "pan",
@@ -437,9 +427,7 @@ def test_get_collections():
             },
             {
                 "stac_version": "0.9.0",
-                "stac_extensions": [
-                    "eo"
-                ],
+                "stac_extensions": [],
                 "id": "CBERS4A_WPM_L4_DN",
                 "title": "CBERS4A_WPM_L4_DN",
                 "description": "CBERS4A WPM Level4 DN dataset",
@@ -456,7 +444,7 @@ def test_get_collections():
                         "2020-10-09"
                     ]
                 },
-                "properties": {
+                "summaries": {
                     "eo:bands": [
                         {
                             "name": "pan",
@@ -520,9 +508,7 @@ def test_get_collections_collection_id():
 
     expected = {
         "stac_version": "0.9.0",
-        "stac_extensions": [
-            "eo"
-        ],
+        "stac_extensions": [],
         "id": "CBERS4A_MUX_L2_DN",
         "title": "CBERS4A_MUX_L2_DN",
         "description": "CBERS4A MUX Level2 DN dataset",
@@ -539,7 +525,7 @@ def test_get_collections_collection_id():
                 "2020-10-09"
             ]
         },
-        "properties": {
+        "summaries": {
             "eo:bands": [
                 {
                     "name": "blue",
