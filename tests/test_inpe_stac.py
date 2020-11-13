@@ -1444,45 +1444,68 @@ def test_get_stac():
         "stac_version": "0.9.0",
         'stac_extensions': [],
         "id": "inpe-stac",
+        "title": "INPE STAC",
         "description": "INPE STAC Catalog",
         "links": [
             {
                 "href": "http://localhost:8089/inpe-stac/stac",
-                "rel": "self"
+                "rel": "self",
+                "type": "application/json",
+                "title": "This document"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/conformance",
+                "rel": "conformance",
+                "type": "application/json",
+                "title": "OGC API conformance classes implemented by this server"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections",
-                "rel": "collections"
+                "rel": "data",
+                "type": "application/json",
+                "title": "Information about the feature collections"
+            },
+            {
+                "href": "http://localhost:8089/inpe-stac/stac/search",
+                "rel": "search",
+                "type": "application/json",
+                "title": "Search across feature collections"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L2_DN",
                 "rel": "child",
-                "title": "CBERS4A_MUX_L2_DN"
+                "type": "application/json",
+                "title": "CBERS4A_MUX_L2_DN collection"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_MUX_L4_DN",
                 "rel": "child",
-                "title": "CBERS4A_MUX_L4_DN"
+                "type": "application/json",
+                "title": "CBERS4A_MUX_L4_DN collection"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L2_DN",
                 "rel": "child",
-                "title": "CBERS4A_WFI_L2_DN"
+                "type": "application/json",
+                "title": "CBERS4A_WFI_L2_DN collection"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WFI_L4_DN",
                 "rel": "child",
-                "title": "CBERS4A_WFI_L4_DN"
+                "type": "application/json",
+                "title": "CBERS4A_WFI_L4_DN collection"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WPM_L2_DN",
                 "rel": "child",
-                "title": "CBERS4A_WPM_L2_DN"
+                "type": "application/json",
+                "title": "CBERS4A_WPM_L2_DN collection"
             },
             {
                 "href": "http://localhost:8089/inpe-stac/collections/CBERS4A_WPM_L4_DN",
                 "rel": "child",
-                "title": "CBERS4A_WPM_L4_DN"
+                "type": "application/json",
+                "title": "CBERS4A_WPM_L4_DN collection"
             }
         ]
     }
@@ -1496,7 +1519,7 @@ def test_get_stac():
     assert expected["stac_version"] == result.stac_version
     assert [] == result.stac_extensions
     assert expected["id"] == result.id
-    assert None == result.title
+    assert expected["title"] == result.title
     assert expected["description"] == result.description
     assert None == result.summaries
     assert expected["links"] == result.links
