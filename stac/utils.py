@@ -28,16 +28,7 @@ class Utils:
 
         :raises ValueError: If the response body does not contain a valid json.
         """
-        response = get(url, params=params)
-
-        response.raise_for_status()
-
-        content_type = response.headers.get('content-type')
-
-        if content_type not in ('application/json', 'application/geo+json'):
-            raise ValueError('HTTP response is not JSON: Content-Type: {}'.format(content_type))
-
-        return response.json()
+        return get(url, params=params)
 
     def _post(url, data=None):
         """Query the STAC service using HTTP POST verb and return the result as a JSON document.
@@ -53,13 +44,4 @@ class Utils:
 
         :raises ValueError: If the response body does not contain a valid json.
         """
-        response = post(url, data=dumps(data), headers={'content-type': 'application/json'})
-
-        response.raise_for_status()
-
-        content_type = response.headers.get('content-type')
-
-        if content_type not in ('application/json', 'application/geo+json'):
-            raise ValueError('HTTP response is not JSON: Content-Type: {}'.format(content_type))
-
-        return response.json()
+        return post(url, data=dumps(data), headers={'content-type': 'application/json'})

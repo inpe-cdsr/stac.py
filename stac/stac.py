@@ -61,9 +61,7 @@ class STAC:
     # rodrigo's version
     def catalog(self):
         """Return the root catalog."""
-        if self._catalog is None:
-            self._catalog = Catalog(Utils._get('{}/stac'.format(self._url)))
-        return self._catalog
+        return Utils._get('{}/stac'.format(self._url))
 
     # new version
     # def collections(self):

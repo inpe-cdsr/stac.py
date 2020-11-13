@@ -99,9 +99,11 @@ def test_get_conformance():
         ]
     }
 
-    result = service.conformance()
+    response = service.conformance()
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_collections():
@@ -494,9 +496,11 @@ def test_get_collections():
         ]
     }
 
-    result = service.collections()
+    response = service.collections()
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_collections_collection_id():
@@ -569,9 +573,11 @@ def test_get_collections_collection_id():
         ]
     }
 
-    result = service.collections(collection_id=collection_id)
+    response = service.collections(collection_id=collection_id)
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_collections_collection_id__not_found_collection():
@@ -581,11 +587,16 @@ def test_get_collections_collection_id__not_found_collection():
 
     collection_id = "CB4A_MUX_L2_DN"
 
-    expected = {}
+    expected = {
+        "code": "404",
+        "description": 'The requested URI was not found.'
+    }
 
-    result = service.collections(collection_id=collection_id)
+    response = service.collections(collection_id=collection_id)
 
-    assert expected == result
+    assert 404 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_collections_collection_id_items():
@@ -913,9 +924,11 @@ def test_get_collections_collection_id_items():
         ]
     }
 
-    result = service.collections_items(collection_id=collection_id, params=params)
+    response = service.collections_items(collection_id=collection_id, params=params)
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_collections_collection_id_items__with_params_ids():
@@ -1241,9 +1254,11 @@ def test_get_collections_collection_id_items__with_params_ids():
         ]
     }
 
-    result = service.collections_items(collection_id=collection_id, params=params)
+    response = service.collections_items(collection_id=collection_id, params=params)
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_collections_collection_id_items_item_id():
@@ -1393,11 +1408,13 @@ def test_get_collections_collection_id_items_item_id():
         ]
     }
 
-    result = service.collections_items(
+    response = service.collections_items(
         collection_id=collection_id, item_id=item_id
     )
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_collections_collection_id_items_item_id__not_found_item():
@@ -1415,11 +1432,13 @@ def test_get_collections_collection_id_items_item_id__not_found_item():
 
     expected = {}
 
-    result = service.collections_items(
+    response = service.collections_items(
         collection_id=collection_id, item_id=item_id, params=params
     )
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_stac():
@@ -1497,19 +1516,11 @@ def test_get_stac():
         ]
     }
 
-    result = service.catalog()
+    response = service.catalog()
 
-    # check all dict/json
-    assert expected == result
-
-    # check specifics keys
-    assert expected["stac_version"] == result.stac_version
-    assert [] == result.stac_extensions
-    assert expected["id"] == result.id
-    assert expected["title"] == result.title
-    assert expected["description"] == result.description
-    assert None == result.summaries
-    assert expected["links"] == result.links
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_post_stac_search():
@@ -2399,7 +2410,11 @@ def test_get_post_stac_search():
         }
     ]
 
-    assert expected == service.search(params=params)
+    response = service.search(params=params)
+
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
     expected['links'] = [
         {
@@ -2420,7 +2435,11 @@ def test_get_post_stac_search():
         }
     ]
 
-    assert expected == service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
+
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_post_stac_search__pagination__page_1__limit_2():
@@ -2732,11 +2751,19 @@ def test_get_post_stac_search__pagination__page_1__limit_2():
 
     expected['links'] = links_GET_method
 
-    assert expected == service.search(params=params)
+    response = service.search(params=params)
+
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
     expected['links'] = links_POST_method
 
-    assert expected == service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
+
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_post_stac_search__pagination__page_2__limit_2():
@@ -3048,11 +3075,19 @@ def test_get_post_stac_search__pagination__page_2__limit_2():
 
     expected['links'] = links_GET_method
 
-    assert expected == service.search(params=params)
+    response = service.search(params=params)
+
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
     expected['links'] = links_POST_method
 
-    assert expected == service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
+
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_get_post_stac_search__pagination__page_3__limit_2():
@@ -3364,11 +3399,19 @@ def test_get_post_stac_search__pagination__page_3__limit_2():
 
     expected['links'] = links_GET_method
 
-    assert expected == service.search(params=params)
+    response = service.search(params=params)
+
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
     expected['links'] = links_POST_method
 
-    assert expected == service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
+
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_post_stac_search__without_query_parameter():
@@ -3677,9 +3720,11 @@ def test_post_stac_search__without_query_parameter():
         )[1]
     }
 
-    result = service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_post_stac_search__with_query_parameter_lte():
@@ -3993,9 +4038,11 @@ def test_post_stac_search__with_query_parameter_lte():
         )[1]
     }
 
-    result = service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_post_stac_search__with_query_parameter_gte():
@@ -4309,9 +4356,11 @@ def test_post_stac_search__with_query_parameter_gte():
         )[1]
     }
 
-    result = service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_post_stac_search__with_query_parameter_lte_gte():
@@ -4626,9 +4675,11 @@ def test_post_stac_search__with_query_parameter_lte_gte():
         )[1]
     }
 
-    result = service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_post_stac_search__with_one_collection():
@@ -4952,9 +5003,11 @@ def test_post_stac_search__with_one_collection():
         )[1]
     }
 
-    result = service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_post_stac_search__with_collections():
@@ -5307,9 +5360,11 @@ def test_post_stac_search__with_collections():
         )[1]
     }
 
-    result = service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_post_stac_search__collection_does_not_have_items():
@@ -5352,9 +5407,11 @@ def test_post_stac_search__collection_does_not_have_items():
         )[1]
     }
 
-    result = service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_post_stac_search__collection_does_not_exist():
@@ -5397,9 +5454,11 @@ def test_post_stac_search__collection_does_not_exist():
         )[1]
     }
 
-    result = service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 
 def test_post_stac_search__one_collection_exist_and_other_one_does_not_exist():
@@ -5590,9 +5649,11 @@ def test_post_stac_search__one_collection_exist_and_other_one_does_not_exist():
         )[1]
     }
 
-    result = service.search(params=params, method="POST")
+    response = service.search(params=params, method="POST")
 
-    assert expected == result
+    assert 200 == response.status_code
+    assert response.headers.get('content-type') in ('application/json', 'application/geo+json')
+    assert expected == response.json()
 
 '''
 def test_get_post_stac_search__error__invalid_params():
